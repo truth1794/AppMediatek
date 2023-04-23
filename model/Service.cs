@@ -1,13 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AppMediatek.Model
+﻿namespace AppMediatek.Model
 {
-    class Service
+    /// <summary>
+    /// Classe métier liée à la table Developpeur
+    /// </summary>
+    public class Service
     {
 
+        /// <summary>
+        /// Valorise les propriétés
+        /// </summary>
+        /// <param name="idPersonnel"></param>
+        /// <param name="nom"></param>
+        public Service(int idService, string nom)
+        {
+            this.IdService = idService;
+            this.Nom = nom;
+
+        }
+
+        public int IdService { get; }
+        public string Nom { get; set; }
     }
 }

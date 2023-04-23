@@ -55,6 +55,14 @@ namespace AppMediatek.controller
         {
             return absenceAcces.GetAbsences(idPerso);
         }
+        /// <summary>
+        /// supprime un personnel de la base de donnee
+        /// </summary>
+        /// <param name="personnel">objet personnel à supprimer</param>
+        public void DelPersonnel(Personnel personnel)
+        {
+            personnelAcces.DelPersonnel(personnel);
+        }
 
         /// <summary>
         /// Demande de suppression d'un développeur

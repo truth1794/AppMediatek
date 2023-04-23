@@ -41,6 +41,7 @@ namespace AppMediatek.view
             this.colPrenom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colMail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colIdService = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSave
@@ -70,6 +71,7 @@ namespace AppMediatek.view
             this.btnModif.TabIndex = 2;
             this.btnModif.Text = "Modifier";
             this.btnModif.UseVisualStyleBackColor = true;
+            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
             // 
             // btnSuppr
             // 
@@ -79,6 +81,7 @@ namespace AppMediatek.view
             this.btnSuppr.TabIndex = 3;
             this.btnSuppr.Text = "Supprimer";
             this.btnSuppr.UseVisualStyleBackColor = true;
+            this.btnSuppr.Click += new System.EventHandler(this.btnSuppr_Click);
             // 
             // btnAfficheAbs
             // 
@@ -98,7 +101,8 @@ namespace AppMediatek.view
             this.colNom,
             this.colPrenom,
             this.colTel,
-            this.colMail});
+            this.colMail,
+            this.colIdService});
             this.lstVPersonnel.FullRowSelect = true;
             this.lstVPersonnel.HideSelection = false;
             this.lstVPersonnel.Location = new System.Drawing.Point(12, 67);
@@ -107,7 +111,6 @@ namespace AppMediatek.view
             this.lstVPersonnel.TabIndex = 6;
             this.lstVPersonnel.UseCompatibleStateImageBehavior = false;
             this.lstVPersonnel.View = System.Windows.Forms.View.Details;
-            this.lstVPersonnel.SelectedIndexChanged += new System.EventHandler(this.lstVPersonnel_SelectedIndexChanged);
             // 
             // colId
             // 
@@ -137,7 +140,12 @@ namespace AppMediatek.view
             // colMail
             // 
             this.colMail.Text = "Mail";
-            this.colMail.Width = 163;
+            this.colMail.Width = 177;
+            // 
+            // colIdService
+            // 
+            this.colIdService.Text = "IdService";
+            this.colIdService.Width = 0;
             // 
             // FrmGestion
             // 
@@ -171,5 +179,6 @@ namespace AppMediatek.view
         private System.Windows.Forms.ColumnHeader colPrenom;
         private System.Windows.Forms.ColumnHeader colTel;
         private System.Windows.Forms.ColumnHeader colMail;
+        private System.Windows.Forms.ColumnHeader colIdService;
     }
 }

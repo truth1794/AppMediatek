@@ -42,9 +42,37 @@ namespace AppMediatek.controller
         /// Récupère et retourne les infos du Personnels
         /// </summary>
         /// <returns>liste des développeurs</returns>
-        public List<Personnel> GetInfoPerso()
+        //public List<Personnel> GetInfoPerso()
+        //{
+        //    return personnelAcces.getInfoPerso();
+        //}
+
+        /// <summary>
+        /// Récupère et retourne les infos du Personnels
+        /// </summary>
+        /// <returns>liste des développeurs</returns>
+        public List<Service> GetServices()
         {
-            return personnelAcces.GetLePersonnel();
+            return serviceAcces.GetServices();
         }
+
+        /// <summary>
+        /// Ajoute un personnel a la base de donnee
+        /// </summary>
+        /// <param name="personnel">objet personnel à ajouter</param>
+        public void AddPersonnel(Personnel personnel)
+        {
+            personnelAcces.AddPersonnel(personnel);
+        }
+
+        /// <summary>
+        /// Modifie un personnel de la base de donnee
+        /// </summary>
+        /// <param name="personnel">objet personnel à modifier</param>
+        public void UpdatePersonnel(Personnel personnel)
+        {
+            personnelAcces.UpdatePersonnel(personnel);
+        }
+
     }
 }

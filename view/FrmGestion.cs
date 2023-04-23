@@ -14,7 +14,7 @@ namespace AppMediatek.view
         /// <summary>
         /// Booléen pour savoir si une modification est demandée
         /// </summary>
-        private Boolean enCoursDeModifPersonnel = false;
+        private Boolean modifEnCours = false;
         /// <summary>
         /// Objet pour gérer la liste des développeurs
         /// </summary>
@@ -28,6 +28,7 @@ namespace AppMediatek.view
         /// </summary>
         private FrmGestionController controller;
 
+        private List<Personnel> lePersonnel = new List<Personnel>();
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
@@ -60,13 +61,22 @@ namespace AppMediatek.view
         private void Init()
         {
             controller = new FrmGestionController();
-            
             RemplirListePersonnels();
             //RemplirListeAbsents();
             //EnCourseModifPersonnel(false);
             //EnCoursModifAbsent(false);
         }
+        protected override void OnActivated(EventArgs e)
+        {
+            ListUpdate();
+            modifEnCours = false;
+        }
 
+        private void ListUpdate()
+        {
+            lstVPersonnel.Items.Clear();
+            RemplirListePersonnels();
+        }
         ///// <summary>
         ///// Affiche les développeurs
         ///// </summary>
@@ -92,18 +102,19 @@ namespace AppMediatek.view
         /// </summary>
         private void RemplirListePersonnels()
         {
-            List<Personnel> lePersonnel = controller.GetLePersonnel();
-            string[] perso = new string[6];
+            lePersonnel = controller.GetLePersonnel();
+            string[] perso = new string[8];
             for (int i = 0; i < lePersonnel.Count; i++)
             {
                 perso[0] = lePersonnel[i].Idpersonnel.ToString();
-                perso[1] = lePersonnel[i].Service;
-                perso[2] = lePersonnel[i].Nom;
-                perso[3] = lePersonnel[i].Prenom;
-                perso[4] = lePersonnel[i].Tel;
-                perso[5] = lePersonnel[i].Mail;
+                perso[2] = lePersonnel[i].Service;
+                perso[3] = lePersonnel[i].Nom;
+                perso[4] = lePersonnel[i].Prenom;
+                perso[5] = lePersonnel[i].Tel;
+                perso[6] = lePersonnel[i].Mail;
+                perso[7] = lePersonnel[i].Idservice.ToString();
                 var lstVItem = new ListViewItem(perso[0]);
-                for (int k = 1; k < 6; k++)
+                for (int k = 2; k < 8; k++)
                 {
                     lstVItem.SubItems.Add(perso[k]);
                 }
@@ -126,19 +137,49 @@ namespace AppMediatek.view
             //lstVPersonnel.Columns.Add("Mail");
         }
 
-        private void lstVPersonnel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnAjout_Click(object sender, EventArgs e)
+        {
+            FrmAjoutModif frm = new FrmAjoutModif(null,modifEnCours);
+            //this.Hide();
+            frm.ShowDialog();
+        }
+
+        private void btnModif_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
             if (indices.Count == 1)
             {
-                FrmAjoutModif frm = new FrmAjoutModif();
+                modifEnCours = true;
+                ListViewItem data0 = lstVPersonnel.SelectedItems[0];
+                string[] data = new string[7];
+                data[0] = data0.Text;
+                for (int k = 1; k < 7; k++)
+                {
+                    data[k] = data0.SubItems[k].Text;
+                }
+                //string selectionData = lstVPersonnel.Items[0].Text;
+                FrmAjoutModif frm = new FrmAjoutModif(data, modifEnCours);
                 //this.Hide();
                 frm.ShowDialog();
+            }
+        }
+
+        private void btnSuppr_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
+            if (indices.Count == 1)
+            {
+                ListViewItem data0 = lstVPersonnel.SelectedItems[0];
+                int idPerso = int.Parse(data0.Text);
+                int idService = int.Parse(data0.SubItems[6].Text);
+                string service = data0.SubItems[1].Text;
+                string nom = data0.SubItems[2].Text;
+                string prenom = data0.SubItems[3].Text;
+                string tel = data0.SubItems[4].Text;
+                string mail = data0.SubItems[5].Text;
+                controller.DelPersonnel(new Personnel(idPerso, idService, service, nom, prenom, tel, mail));
+                ListUpdate();
             }
         }
 

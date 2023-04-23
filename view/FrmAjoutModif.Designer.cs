@@ -39,6 +39,8 @@ namespace AppMediatek.view
             this.lblTel = new System.Windows.Forms.Label();
             this.lblMail = new System.Windows.Forms.Label();
             this.lblService = new System.Windows.Forms.Label();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNom
@@ -132,11 +134,35 @@ namespace AppMediatek.view
             this.lblService.TabIndex = 9;
             this.lblService.Text = "Service :";
             // 
+            // btnValider
+            // 
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValider.Location = new System.Drawing.Point(324, 210);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(118, 41);
+            this.btnValider.TabIndex = 10;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.Location = new System.Drawing.Point(456, 210);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(118, 41);
+            this.btnAnnuler.TabIndex = 11;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
             // FrmAjoutModif
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 282);
+            this.Controls.Add(this.btnAnnuler);
+            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.lblService);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.lblTel);
@@ -166,5 +192,7 @@ namespace AppMediatek.view
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.Label lblMail;
         private System.Windows.Forms.Label lblService;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

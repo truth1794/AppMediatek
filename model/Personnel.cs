@@ -12,14 +12,15 @@ namespace AppMediatek.Model
         /// </summary>
         /// <param name="idPersonnel"></param>
         /// <param name="idService"></param>
+        /// <param name="service"></param>
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="tel"></param>
         /// <param name="mail"></param>
-        /// <param name="pwd"></param>
-        public Personnel(int idPersonnel,string service, string nom, string prenom, string tel, string mail)
+        public Personnel(int idPersonnel,int idService, string service, string nom, string prenom, string tel, string mail)
         {
             this.Idpersonnel = idPersonnel;
+            this.Idservice = idService;
             this.Service = service;
             this.Nom = nom;
             this.Prenom = prenom;
@@ -29,6 +30,7 @@ namespace AppMediatek.Model
         }
 
         public int Idpersonnel { get; }
+        public int Idservice { get; }
         public string Service { get; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
