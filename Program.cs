@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AppMediatek.view;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace app_mediatek
+namespace AppMediatek
 {
     static class Program
     {
@@ -16,7 +17,7 @@ namespace app_mediatek
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmAuthentification());
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33214.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app_mediatek", "app_mediatek.csproj", "{44F76D22-B73A-4BE2-8DAA-EC1EEF0310AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMediatek", "AppMediatek.csproj", "{44F76D22-B73A-4BE2-8DAA-EC1EEF0310AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
