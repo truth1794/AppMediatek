@@ -37,11 +37,12 @@ namespace AppMediatek.dal
                 //req += "where p.idpersonnel in ";
                 //req += "(select a.idpersonnel from absence) and p.idservice = s.idservice ";
                 //req += "order by nom, prenom;";
-                string req = "select a.idpersonnel, a.datedebut, a.idmotif, a.datefin ";
-                req += "from absence a ";
+                string req = "select a.idpersonnel, a.datedebut, a.idmotif, a.datefin, m.libelle ";
+                req += "from absence a, personnel p, motif m ";
                 req += "where p.idpersonnel in ";
                 req += "(select a.idpersonnel from absence) and ";
-                req += "p.idpersonnel = " + idPersonnel.ToString() + " ";
+                req += "p.idpersonnel = " + idPersonnel.ToString() + " and ";
+                req += "m.idmotif = a.idmotif ";
                 req += "order by a.datedebut;";
                 //req += "order by nom, prenom;";
                 try
@@ -59,8 +60,8 @@ namespace AppMediatek.dal
                             //Absence absent = new Absence((int)record[0], (int)record[1], (string)record[2],
                             //    (string)record[3], (string)record[4], (string)record[5]);
 
-                            Absence absent = new Absence((int)record[0], (string)record[1], (int)record[2],
-                                (string)record[3]);
+                            Absence absent = new Absence((int)record[0], (DateTime)record[1], (int)record[2],
+                                (DateTime)record[3],(string)record[4]);
                             absences.Add(absent);
                         }
                     }
@@ -76,47 +77,21 @@ namespace AppMediatek.dal
         }
 
         /// <summary>
-        /// Demande de suppression d'un développeur
+        /// Ajouter un personnel
         /// </summary>
-        /// <param name="developpeur">objet developpeur à supprimer</param>
-        //public void DelDepveloppeur(Developpeur developpeur)
+        /// <param name="personnel">objet developpeur à ajouter</param>
+        //public void AddAbsence(Absence absence)
         //{
         //    if (access.Manager != null)
         //    {
-        //        string req = "delete from developpeur where iddeveloppeur = @iddeveloppeur;";
+        //        string req = "insert into personnel(idservice,nom, prenom, tel, mail) ";
+        //        req += "values (@idservice,@nom, @prenom, @tel, @mail);";
         //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            {"@iddeveloppeur", developpeur.Iddeveloppeur }
-        //        };
-        //        try
-        //        {
-        //            access.Manager.ReqUpdate(req, parameters);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Demande d'ajout un développeur
-        ///// </summary>
-        ///// <param name="developpeur">objet developpeur à ajouter</param>
-        //public void AddDeveloppeur(Developpeur developpeur)
-        //{
-        //    if (access.Manager != null)
-        //    {
-        //        string req = "insert into developpeur(nom, prenom, tel, mail, pwd, idprofil) ";
-        //        req += "values (@nom, @prenom, @tel, @mail, SHA2(@pwd, 256), @idprofil);";
-        //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@nom", developpeur.Nom },
-        //            { "@prenom", developpeur.Prenom },
-        //            { "@tel", developpeur.Tel },
-        //            { "@mail", developpeur.Mail },
-        //            { "@pwd", developpeur.Nom },
-        //            { "@idprofil", developpeur.Profil.Idprofil }
+        //            { "@idservice", personnel.Idservice },
+        //            { "@nom", personnel.Nom },
+        //            { "@prenom", personnel.Prenom },
+        //            { "@tel", personnel.Tel },
+        //            { "@mail", personnel.Mail }
         //        };
         //        try
         //        {
@@ -131,23 +106,23 @@ namespace AppMediatek.dal
         //    }
         //}
 
-        ///// <summary>
-        ///// Demande de modification d'un développeur
-        ///// </summary>
-        ///// <param name="developpeur">objet developpeur à modifier</param>
-        //public void UpdateDeveloppeur(Developpeur developpeur)
+        /// <summary>
+        /// Demande de modification d'un développeur
+        /// </summary>
+        /// <param name="personnel">objet developpeur à modifier</param>
+        //public void UpdateAbsence(Personnel personnel)
         //{
         //    if (access.Manager != null)
         //    {
-        //        string req = "update developpeur set nom = @nom, prenom = @prenom, tel = @tel, mail = @mail, idprofil = @idprofil ";
-        //        req += "where iddeveloppeur = @iddeveloppeur;";
+        //        string req = "update personnel set idservice=@idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail ";
+        //        req += "where idpersonnel= @idpersonnel;";
         //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@idDeveloppeur", developpeur.Iddeveloppeur },
-        //            { "@nom", developpeur.Nom },
-        //            { "@prenom", developpeur.Prenom },
-        //            { "@tel", developpeur.Tel },
-        //            { "@mail", developpeur.Mail },
-        //            { "idprofil", developpeur.Profil.Idprofil }
+        //            { "@idpersonnel", personnel.Idpersonnel },
+        //            { "@idservice", personnel.Idservice },
+        //            { "@nom", personnel.Nom },
+        //            { "@prenom", personnel.Prenom },
+        //            { "@tel", personnel.Tel },
+        //            { "@mail", personnel.Mail }
         //        };
         //        try
         //        {
@@ -161,20 +136,17 @@ namespace AppMediatek.dal
         //        }
         //    }
         //}
-
-        ///// <summary>
-        ///// Demande de modification du pwd
-        ///// </summary>
-        ///// <param name="developpeur">objet developpeur avec nouveau pwd</param>
-        //public void UpdatePwd(Developpeur developpeur)
+        /// <summary>
+        /// Demande de suppression d'un développeur
+        /// </summary>
+        /// <param name="personnel">objet developpeur à supprimer</param>
+        //public void DelPersonnel(Personnel personnel)
         //{
         //    if (access.Manager != null)
         //    {
-        //        string req = "update developpeur set pwd = SHA2(@pwd, 256) ";
-        //        req += "where iddeveloppeur = @iddeveloppeur;";
+        //        string req = "delete from personnel where idpersonnel = @idpersonnel;";
         //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@idDeveloppeur", developpeur.Iddeveloppeur },
-        //            { "@pwd", developpeur.Pwd }
+        //            {"@idpersonnel", personnel.Idpersonnel }
         //        };
         //        try
         //        {
@@ -183,11 +155,10 @@ namespace AppMediatek.dal
         //        catch (Exception e)
         //        {
         //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.UpdatePwd catch req={0} erreur={1}", req, e.Message);
+        //            Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
         //            Environment.Exit(0);
         //        }
         //    }
         //}
-
     }
 }

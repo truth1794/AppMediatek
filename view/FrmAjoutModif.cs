@@ -55,21 +55,21 @@ namespace AppMediatek.view
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            DialogResult check = MessageBox.Show("Cette operation va modifier la base de donnee !", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (check == DialogResult.OK)
+            string nom = txtNom.Text;
+            string prenom = txtPrenom.Text;
+            string tel = txtTel.Text;
+            string mail = txtMail.Text;
+            int idService = cmbService.SelectedIndex + 1;
+            string service = cmbService.Text;
+            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(tel)
+                    || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(idService.ToString()) || string.IsNullOrEmpty(service))
             {
-                string nom = txtNom.Text;
-                string prenom = txtPrenom.Text;
-                string tel = txtTel.Text;
-                string mail = txtMail.Text;
-                int idService = cmbService.SelectedIndex + 1;
-                string service = cmbService.Text;
-                if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(tel)
-                     || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(idService.ToString()) || string.IsNullOrEmpty(service))
-                {
-                    MessageBox.Show("Tous les champs doivent être remplis.", "Information");
-                }
-                else
+                MessageBox.Show("Tous les champs doivent être remplis.", "Information");
+            }
+            else
+            {
+                DialogResult check = MessageBox.Show("Cette operation va modifier la base de donnee !", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (check == DialogResult.OK)
                 {
                     if (modifEnCours)
                     {
@@ -79,8 +79,8 @@ namespace AppMediatek.view
                     {
                         AddPerso(new Personnel(0, idService, service, nom, prenom, tel, mail));
                     }
-                }
-                this.Close();
+                    this.Close();
+                }  
             }
         }
 

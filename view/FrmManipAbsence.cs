@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace app_mediatek.view
 {
-    public partial class FrmAbsence : Form
+    public partial class FrmManipAbsence : Form
     {
-        public FrmAbsence()
+        public FrmManipAbsence()
         {
             InitializeComponent();
         }

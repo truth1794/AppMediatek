@@ -66,17 +66,17 @@ namespace AppMediatek.view
             //EnCourseModifPersonnel(false);
             //EnCoursModifAbsent(false);
         }
-        protected override void OnActivated(EventArgs e)
-        {
-            ListUpdate();
-            modifEnCours = false;
-        }
+        //protected override void OnActivated(EventArgs e)
+        //{
+        //    ListUpdate();
+        //    modifEnCours = false;
+        //}
 
-        private void ListUpdate()
-        {
-            lstVPersonnel.Items.Clear();
-            RemplirListePersonnels();
-        }
+        //private void ListUpdate()
+        //{
+        //    lstVPersonnel.Items.Clear();
+        //    RemplirListePersonnels();
+        //}
         ///// <summary>
         ///// Affiche les développeurs
         ///// </summary>
@@ -124,7 +124,22 @@ namespace AppMediatek.view
 
         private void btnAfficheAbs_Click(object sender, EventArgs e)
         {
-
+            ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
+            if (indices.Count == 1)
+            {
+                modifEnCours = true;
+                ListViewItem data0 = lstVPersonnel.SelectedItems[0];
+                string[] data = new string[7];
+                data[0] = data0.Text;
+                for (int k = 1; k < 7; k++)
+                {
+                    data[k] = data0.SubItems[k].Text;
+                }
+                //string selectionData = lstVPersonnel.Items[0].Text;
+                FrmAffichAbsence frm = new FrmAffichAbsence(data);
+                //this.Hide();
+                frm.ShowDialog();
+            }
         }
 
         private void SetupListView()
@@ -179,9 +194,11 @@ namespace AppMediatek.view
                 string tel = data0.SubItems[4].Text;
                 string mail = data0.SubItems[5].Text;
                 controller.DelPersonnel(new Personnel(idPerso, idService, service, nom, prenom, tel, mail));
-                ListUpdate();
+                //ListUpdate();
             }
         }
+
+
 
         //    /// <summary>
         //    /// Affiche les profils

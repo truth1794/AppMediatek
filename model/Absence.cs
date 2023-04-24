@@ -1,11 +1,12 @@
-﻿namespace AppMediatek.Model
+﻿using System;
+
+namespace AppMediatek.Model
 {
     /// <summary>
     /// Classe métier liée à la table Developpeur
     /// </summary>
     public class Absence
     {
-
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
@@ -13,18 +14,24 @@
         /// <param name="motif"></param>
         /// <param name="dateDebut"></param>
         /// <param name="dateFin"></param>
-        public Absence(int idPersonnel, string dateDebut, int motif, string dateFin)
+        /// <param name="motif"></param>
+        public Absence(int idPersonnel, DateTime dateDebut, int idMotif, DateTime dateFin, string motif)
         {
             this.Idpersonnel = idPersonnel;
-            this.IdMotif = motif;
+            this.IdMotif = idMotif;
             this.DateDebut = dateDebut;
             this.DateFin = dateFin;
+            this.Motif = motif;
 
+            //DateTime myDateTime = DateTime.Now;
+            //string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
         }
 
         public int Idpersonnel { get; }
         public int IdMotif { get; set; }
-        public string DateDebut { get; set; }
-        public string DateFin { get; set; }
+        public DateTime DateDebut { get; set; }
+        public DateTime DateFin { get; set; }
+        public string Motif { get; set; }
+
     }
 }
