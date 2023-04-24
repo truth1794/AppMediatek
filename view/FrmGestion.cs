@@ -66,17 +66,17 @@ namespace AppMediatek.view
             //EnCourseModifPersonnel(false);
             //EnCoursModifAbsent(false);
         }
-        //protected override void OnActivated(EventArgs e)
-        //{
-        //    ListUpdate();
-        //    modifEnCours = false;
-        //}
+        protected override void OnActivated(EventArgs e)
+        {
+            ListUpdate();
+            modifEnCours = false;
+        }
 
-        //private void ListUpdate()
-        //{
-        //    lstVPersonnel.Items.Clear();
-        //    RemplirListePersonnels();
-        //}
+        private void ListUpdate()
+        {
+            lstVPersonnel.Items.Clear();
+            RemplirListePersonnels();
+        }
         ///// <summary>
         ///// Affiche les développeurs
         ///// </summary>
@@ -194,7 +194,7 @@ namespace AppMediatek.view
                 string tel = data0.SubItems[4].Text;
                 string mail = data0.SubItems[5].Text;
                 controller.DelPersonnel(new Personnel(idPerso, idService, service, nom, prenom, tel, mail));
-                //ListUpdate();
+                ListUpdate();
             }
         }
 

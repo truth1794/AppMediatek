@@ -57,6 +57,20 @@ namespace AppMediatek.controller
         }
 
         /// <summary>
+        /// Récupère et retourne les absences du personnel selectionne
+        /// </summary>
+        /// <returns>liste des absences</returns>
+        public List<Motif> GetMotifs()
+        {
+            return motifAcces.GetMotifs();
+        }
+
+        public void DelAbsence(Absence absence)
+        {
+            absenceAcces.DelAbsence(absence);
+        }
+
+        /// <summary>
         /// Ajoute un personnel a la base de donnee
         /// </summary>
         /// <param name="personnel">objet personnel à ajouter</param>

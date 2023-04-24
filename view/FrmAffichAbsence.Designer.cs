@@ -45,6 +45,7 @@ namespace AppMediatek.view
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblService = new System.Windows.Forms.Label();
             this.lblNbAbsences = new System.Windows.Forms.Label();
+            this.colIdMotif = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lstVAbsences
@@ -52,7 +53,9 @@ namespace AppMediatek.view
             this.lstVAbsences.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colDateDebut,
             this.colDateFin,
-            this.colMotif});
+            this.colMotif,
+            this.colIdMotif});
+            this.lstVAbsences.FullRowSelect = true;
             this.lstVAbsences.HideSelection = false;
             this.lstVAbsences.Location = new System.Drawing.Point(12, 67);
             this.lstVAbsences.Name = "lstVAbsences";
@@ -114,6 +117,7 @@ namespace AppMediatek.view
             this.btnSuppr.TabIndex = 6;
             this.btnSuppr.Text = "Supprimer";
             this.btnSuppr.UseVisualStyleBackColor = true;
+            this.btnSuppr.Click += new System.EventHandler(this.btnSuppr_Click);
             // 
             // btnModif
             // 
@@ -123,6 +127,7 @@ namespace AppMediatek.view
             this.btnModif.TabIndex = 5;
             this.btnModif.Text = "Modifier";
             this.btnModif.UseVisualStyleBackColor = true;
+            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
             // 
             // btnAjout
             // 
@@ -132,6 +137,7 @@ namespace AppMediatek.view
             this.btnAjout.TabIndex = 4;
             this.btnAjout.Text = "Ajouter";
             this.btnAjout.UseVisualStyleBackColor = true;
+            this.btnAjout.Click += new System.EventHandler(this.btnAjout_Click);
             // 
             // button1
             // 
@@ -192,6 +198,10 @@ namespace AppMediatek.view
             this.lblNbAbsences.TabIndex = 12;
             this.lblNbAbsences.Text = "label4";
             // 
+            // colIdMotif
+            // 
+            this.colIdMotif.Width = 0;
+            // 
             // FrmAffichAbsence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,5 +245,6 @@ namespace AppMediatek.view
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblService;
         private System.Windows.Forms.Label lblNbAbsences;
+        private System.Windows.Forms.ColumnHeader colIdMotif;
     }
 }

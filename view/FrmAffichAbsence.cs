@@ -113,11 +113,48 @@ namespace AppMediatek.view
                 var lstVItem = new ListViewItem(perso[0]);
                 lstVItem.SubItems.Add(perso[2]);
                 lstVItem.SubItems.Add(perso[3]);
+                lstVItem.SubItems.Add(perso[1]);
                 lstVAbsences.Items.Add(lstVItem);
             }
         }
 
-        
+        private void btnAjout_Click(object sender, EventArgs e)
+        {
+            FrmManipAbsence frm = new FrmManipAbsence(null,null,0, modifEnCours, idPersonnel);
+            frm.ShowDialog();
+        }
+
+        private void btnModif_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedIndexCollection indices = lstVAbsences.SelectedIndices;
+            if (indices.Count == 1)
+            {
+                modifEnCours = true;
+                ListViewItem data0 = lstVAbsences.SelectedItems[0];
+                string dateDebut = data0.Text;
+                string dateFin = data0.SubItems[1].Text;
+                int idMotif = int.Parse(data0.SubItems[3].Text);
+                //string selectionData = lstVPersonnel.Items[0].Text;
+                FrmManipAbsence frm = new FrmManipAbsence(dateDebut, dateFin, idMotif, modifEnCours,idPersonnel);
+                //this.Hide();
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnSuppr_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedIndexCollection indices = lstVAbsences.SelectedIndices;
+            if (indices.Count == 1)
+            {
+                ListViewItem data0 = lstVAbsences.SelectedItems[0];
+                DateTime dateDebut = DateTime.Parse(data0.Text);
+                DateTime dateFin = DateTime.Parse(data0.SubItems[1].Text);
+                int idMotif = int.Parse(data0.SubItems[3].Text);
+                string motif = data0.SubItems[2].Text;
+                controller.DelAbsence(new Absence(this.idPersonnel, dateDebut, idMotif, dateFin, motif));
+                ListUpdate();
+            }
+        }
 
 
         //private void btnAjout_Click(object sender, EventArgs e)

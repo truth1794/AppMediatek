@@ -1,5 +1,5 @@
 ﻿
-namespace app_mediatek.view
+namespace AppMediatek.view
 {
     partial class FrmManipAbsence
     {
@@ -35,8 +35,8 @@ namespace app_mediatek.view
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dateTDebut
@@ -94,31 +94,33 @@ namespace app_mediatek.view
             this.label3.TabIndex = 5;
             this.label3.Text = "Motif :";
             // 
-            // button1
+            // btnValider
             // 
-            this.button1.Location = new System.Drawing.Point(164, 224);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 47);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Valider";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnValider.Location = new System.Drawing.Point(164, 224);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(121, 47);
+            this.btnValider.TabIndex = 6;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
-            // button2
+            // btnAnnuler
             // 
-            this.button2.Location = new System.Drawing.Point(313, 224);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 47);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Annuler";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Location = new System.Drawing.Point(313, 224);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(121, 47);
+            this.btnAnnuler.TabIndex = 7;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // FrmManipAbsence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 283);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAnnuler);
+            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -140,7 +142,7 @@ namespace app_mediatek.view
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

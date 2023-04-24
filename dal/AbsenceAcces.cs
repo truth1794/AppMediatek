@@ -77,88 +77,101 @@ namespace AppMediatek.dal
         }
 
         /// <summary>
-        /// Ajouter un personnel
+        /// Ajouter une absence
         /// </summary>
-        /// <param name="personnel">objet developpeur à ajouter</param>
-        //public void AddAbsence(Absence absence)
-        //{
-        //    if (access.Manager != null)
-        //    {
-        //        string req = "insert into personnel(idservice,nom, prenom, tel, mail) ";
-        //        req += "values (@idservice,@nom, @prenom, @tel, @mail);";
-        //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@idservice", personnel.Idservice },
-        //            { "@nom", personnel.Nom },
-        //            { "@prenom", personnel.Prenom },
-        //            { "@tel", personnel.Tel },
-        //            { "@mail", personnel.Mail }
-        //        };
-        //        try
-        //        {
-        //            access.Manager.ReqUpdate(req, parameters);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.AddDeveloppeur catch req={0} erreur={1}", req, e.Message);
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
+        /// <param name="absence">objet absence à ajouter</param>
+        public void AddAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+
+                //string req = "SET FOREIGN_KEY_CHECKS=0; ";
+                //req += "insert into absence(idpersonnel,datedebut, idmotif, datefin) ";
+                //req += "values (@idpersonnel,@datedebut, @idmotif, @datefin); ";
+                //req += "SET FOREIGN_KEY_CHECKS = 1;";
+                string req = "insert into absence(idpersonnel,datedebut, idmotif, datefin) ";
+                req += "values (@idpersonnel,@datedebut, @idmotif, @datefin); ";
+                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd 00:00:00.fff");
+                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd 00:00:00.fff");
+                Dictionary<string, object> parameters = new Dictionary<string, object> {
+                    { "@idpersonnel", absence.Idpersonnel },
+                    { "@datedebut", sqlFormatDateDebut },
+                    { "@idmotif", absence.IdMotif },
+                    { "@datefin", sqlFormatDateFin }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("DeveloppeurAccess.AddDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
 
         /// <summary>
         /// Demande de modification d'un développeur
         /// </summary>
-        /// <param name="personnel">objet developpeur à modifier</param>
-        //public void UpdateAbsence(Personnel personnel)
-        //{
-        //    if (access.Manager != null)
-        //    {
-        //        string req = "update personnel set idservice=@idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail ";
-        //        req += "where idpersonnel= @idpersonnel;";
-        //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@idpersonnel", personnel.Idpersonnel },
-        //            { "@idservice", personnel.Idservice },
-        //            { "@nom", personnel.Nom },
-        //            { "@prenom", personnel.Prenom },
-        //            { "@tel", personnel.Tel },
-        //            { "@mail", personnel.Mail }
-        //        };
-        //        try
-        //        {
-        //            access.Manager.ReqUpdate(req, parameters);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.UpdateDeveloppeur catch req={0} erreur={1}", req, e.Message);
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
+        /// <param name="absence">objet developpeur à modifier</param>
+        public void UpdateAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+                string req = "update absence set datedebut=@datedebut, idmotif = @idmotif, datefin = @datefin ";
+                req += "where idpersonnel= @idpersonnel;";
+                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd 00:00:00.fff");
+                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd 00:00:00.fff");
+                Dictionary<string, object> parameters = new Dictionary<string, object> {
+                    { "@idpersonnel", absence.Idpersonnel },
+                    { "@datedebut", sqlFormatDateDebut },
+                    { "@idmotif", absence.IdMotif },
+                    { "@datefin", sqlFormatDateFin}
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("DeveloppeurAccess.UpdateDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
         /// <summary>
         /// Demande de suppression d'un développeur
         /// </summary>
-        /// <param name="personnel">objet developpeur à supprimer</param>
-        //public void DelPersonnel(Personnel personnel)
-        //{
-        //    if (access.Manager != null)
-        //    {
-        //        string req = "delete from personnel where idpersonnel = @idpersonnel;";
-        //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            {"@idpersonnel", personnel.Idpersonnel }
-        //        };
-        //        try
-        //        {
-        //            access.Manager.ReqUpdate(req, parameters);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
+        /// <param name="absence">objet developpeur à supprimer</param>
+        public void DelAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from absence  ";
+                req += "where idpersonnel = @idpersonnel ";
+                req += "and datedebut = @datedebut ";
+                req += "and datefin = @datefin;";
+                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd HH:mm:ss");
+                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd HH:mm:ss");
+                Dictionary<string, object> parameters = new Dictionary<string, object> {
+                    {"@idpersonnel", absence.Idpersonnel },
+                    {"@datedebut", sqlFormatDateDebut },
+                    {"@datefin", sqlFormatDateFin }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
     }
 }
