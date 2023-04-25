@@ -32,9 +32,9 @@ namespace AppMediatek.controller
         /// </summary>
         public FrmManipAbsController()
         {
-            personnelAcces = new PersonnelAcces();
+            //personnelAcces = new PersonnelAcces();
             absenceAcces = new AbsenceAcces();
-            serviceAcces = new ServiceAcces();
+            //serviceAcces = new ServiceAcces();
             motifAcces = new MotifAcces();
         }
 
@@ -74,9 +74,9 @@ namespace AppMediatek.controller
         }
 
 
-        public void UpdateAbsence(Absence absence)
+        public void UpdateAbsence(Absence updatedAbsence, Absence absenceToUpdate)
         {
-            absenceAcces.UpdateAbsence(absence);
+            absenceAcces.UpdateAbsence(updatedAbsence, absenceToUpdate);
         }
 
        

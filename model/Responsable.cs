@@ -11,17 +11,17 @@ namespace AppMediatek.Model
     /// </summary>
     public class Responsable
     {
-        public string Username { get; }
+        public string Login { get; }
         public string Pwd { get; }
 
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="login"></param>
         /// <param name="pwd"></param>
-        public Responsable(string username, string pwd)
+        public Responsable(string login, string pwd)
         {
-            this.Username = username;
+            this.Login = login;
             this.Pwd = pwd;
         }
     }

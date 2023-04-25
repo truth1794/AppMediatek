@@ -22,17 +22,16 @@ namespace AppMediatek.dal
         /// <summary>
         /// Controle si l'utillisateur a le droit de se connecter (nom, prénom, pwd et profil "admin")
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="pwd"></param>
+        /// <param name="responsable"></param>
         /// <returns>vrai si l'utilisateur a le profil "admin"</returns>
         public Boolean ControleAuthentification(Responsable responsable)
         {
             if (access.Manager != null)
             {
                 string req = "select * from responsable r ";
-                req += "where r.login=@username and r.pwd=SHA2(@pwd, 256);";
+                req += "where r.login=@login and r.pwd=SHA2(@pwd, 256);";
                 Dictionary<string, object> parameters = new Dictionary<string, object> {
-                    { "@username", responsable.Username },
+                    { "@login", responsable.Login },
                     { "@pwd", responsable.Pwd }
                 };
 

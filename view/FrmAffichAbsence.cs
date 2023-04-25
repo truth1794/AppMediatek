@@ -28,6 +28,8 @@ namespace AppMediatek.view
         /// </summary>
         private FrmAffichAbsController controller;
 
+        //private FrmManipAbsence frm;
+
         private List<Absence> absences = new List<Absence>();
 
         private int idPersonnel;
@@ -56,19 +58,18 @@ namespace AppMediatek.view
         {
             controller = new FrmAffichAbsController();
             RemplirListeAbsence(idPersonnel);
-            lblNom.Text = persoNom;
-            lblPrenom.Text = persoPrenom;
-            lblService.Text = persoService;
-            lblNbAbsences.Text = persoNbAsbences.ToString();
+            btnModif.Enabled = false;
+            btnSuppr.Enabled = false;
             //RemplirListeAbsents();
             //EnCourseModifPersonnel(false);
             //EnCoursModifAbsent(false);
         }
-        protected override void OnActivated(EventArgs e)
-        {
-            ListUpdate();
-            modifEnCours = false;
-        }
+
+        //protected override void OnActivated(EventArgs e)
+        //{
+        //    ListUpdate();
+        //    modifEnCours = false;
+        //}
 
         private void ListUpdate()
         {
@@ -95,6 +96,15 @@ namespace AppMediatek.view
         //    lstPerso.Items.AddRange(personnelNom.ToArray());
         //}
 
+        private void ListRefresh(object sender, FormClosingEventArgs e)
+        {
+            lstVAbsences.Items.Clear();
+            RemplirListeAbsence(idPersonnel);
+            btnModif.Enabled = false;
+            btnSuppr.Enabled = false;
+        }
+
+
         /// <summary>
         /// Affiche les développeurs
         /// </summary>
@@ -116,11 +126,16 @@ namespace AppMediatek.view
                 lstVItem.SubItems.Add(perso[1]);
                 lstVAbsences.Items.Add(lstVItem);
             }
+            lblNom.Text = persoNom;
+            lblPrenom.Text = persoPrenom;
+            lblService.Text = persoService;
+            lblNbAbsences.Text = persoNbAsbences.ToString();
         }
 
         private void btnAjout_Click(object sender, EventArgs e)
         {
             FrmManipAbsence frm = new FrmManipAbsence(null,null,0, modifEnCours, idPersonnel);
+            frm.FormClosing += new FormClosingEventHandler(ListRefresh);
             frm.ShowDialog();
         }
 
@@ -136,6 +151,7 @@ namespace AppMediatek.view
                 int idMotif = int.Parse(data0.SubItems[3].Text);
                 //string selectionData = lstVPersonnel.Items[0].Text;
                 FrmManipAbsence frm = new FrmManipAbsence(dateDebut, dateFin, idMotif, modifEnCours,idPersonnel);
+                frm.FormClosing += new FormClosingEventHandler(ListRefresh);
                 //this.Hide();
                 frm.ShowDialog();
             }
@@ -144,7 +160,8 @@ namespace AppMediatek.view
         private void btnSuppr_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVAbsences.SelectedIndices;
-            if (indices.Count == 1)
+            DialogResult check = MessageBox.Show("Cette operation va modifier la base de donnee !", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (check == DialogResult.OK && indices.Count == 1)
             {
                 ListViewItem data0 = lstVAbsences.SelectedItems[0];
                 DateTime dateDebut = DateTime.Parse(data0.Text);
@@ -155,6 +172,27 @@ namespace AppMediatek.view
                 ListUpdate();
             }
         }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lstVAbsences_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstVAbsences.SelectedIndices.Count != 1)
+            {
+                btnModif.Enabled = false;
+                btnSuppr.Enabled = false;
+            }
+            else
+            {
+                btnModif.Enabled = true;
+                btnSuppr.Enabled = true;
+            }
+        }
+
+
 
 
         //private void btnAjout_Click(object sender, EventArgs e)

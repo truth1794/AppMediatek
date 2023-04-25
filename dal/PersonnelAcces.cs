@@ -32,10 +32,10 @@ namespace AppMediatek.dal
             List<Personnel> lePersonnel = new List<Personnel>();
             if (access.Manager != null)
             {
-                string req = "select p.idpersonnel as idpersonnel,p.idservice as idservice, s.nom as service, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail ";
-                req += "from personnel p, service s ";
-                req += "where p.idservice = s.idservice ";
-                req += "order by nom, prenom;";
+                string req = "SELECT p.idpersonnel as idpersonnel,p.idservice as idservice, s.nom as service, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail ";
+                req += "FROM personnel p, service s ";
+                req += "WHERE p.idservice = s.idservice ";
+                req += "ORDER BY nom, prenom;";
                 try
                 {
                     List<Object[]> records = access.Manager.ReqSelect(req);
@@ -71,18 +71,25 @@ namespace AppMediatek.dal
         {
             if (access.Manager != null)
             {
-                string req = "delete from personnel where idpersonnel = @idpersonnel;";
+                string req0 = "DELETE a ";
+                req0 += "FROM absence a ";
+                req0 += "WHERE a.idpersonnel = @idpersonnel;";
+                string req1 = "DELETE p ";
+                req1 += "FROM personnel p ";
+                req1 += "WHERE p.idpersonnel = @idpersonnel;";
                 Dictionary<string, object> parameters = new Dictionary<string, object> {
                     {"@idpersonnel", personnel.Idpersonnel }
                 };
                 try
                 {
-                    access.Manager.ReqUpdate(req, parameters);
+                    access.Manager.ReqUpdate(req0, parameters);
+                    access.Manager.ReqUpdate(req1, parameters);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req0, e.Message);
+                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req1, e.Message);
                     Environment.Exit(0);
                 }
             }
@@ -96,8 +103,8 @@ namespace AppMediatek.dal
         {
             if (access.Manager != null)
             {
-                string req = "insert into personnel(idservice,nom, prenom, tel, mail) ";
-                req += "values (@idservice,@nom, @prenom, @tel, @mail);";
+                string req = "INSERT INTO personnel(idservice,nom, prenom, tel, mail) ";
+                req += "VALUES (@idservice,@nom, @prenom, @tel, @mail);";
                 Dictionary<string, object> parameters = new Dictionary<string, object> {
                     { "@idservice", personnel.Idservice },
                     { "@nom", personnel.Nom },
@@ -126,8 +133,8 @@ namespace AppMediatek.dal
         {
             if (access.Manager != null)
             {
-                string req = "update personnel set idservice=@idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail ";
-                req += "where idpersonnel= @idpersonnel;";
+                string req = "UPDATE personnel SET idservice=@idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail ";
+                req += "WHERE idpersonnel= @idpersonnel;";
                 Dictionary<string, object> parameters = new Dictionary<string, object> {
                     { "@idpersonnel", personnel.Idpersonnel },
                     { "@idservice", personnel.Idservice },
@@ -148,33 +155,5 @@ namespace AppMediatek.dal
                 }
             }
         }
-
-        ///// <summary>
-        ///// Demande de modification du pwd
-        ///// </summary>
-        ///// <param name="developpeur">objet developpeur avec nouveau pwd</param>
-        //public void UpdatePwd(Developpeur developpeur)
-        //{
-        //    if (access.Manager != null)
-        //    {
-        //        string req = "update developpeur set pwd = SHA2(@pwd, 256) ";
-        //        req += "where iddeveloppeur = @iddeveloppeur;";
-        //        Dictionary<string, object> parameters = new Dictionary<string, object> {
-        //            { "@idDeveloppeur", developpeur.Iddeveloppeur },
-        //            { "@pwd", developpeur.Pwd }
-        //        };
-        //        try
-        //        {
-        //            access.Manager.ReqUpdate(req, parameters);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-        //            Log.Error("DeveloppeurAccess.UpdatePwd catch req={0} erreur={1}", req, e.Message);
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
-
     }
 }

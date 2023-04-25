@@ -23,6 +23,7 @@ namespace AppMediatek.view
         private List<Absence> absences = new List<Absence>();
 
         private int idPersonnel;
+        private string dateDebutToChange;
 
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
@@ -63,6 +64,7 @@ namespace AppMediatek.view
             cmbMotif.SelectedIndex = idMotif - 1;
             this.modifEnCours = modifEnCours;
             this.idPersonnel = idPersonnel;
+            dateDebutToChange = dateDebut;
             //RemplirListeAbsents();
             //EnCourseModifPersonnel(false);
             //EnCoursModifAbsent(false);
@@ -73,6 +75,10 @@ namespace AppMediatek.view
             if (cmbMotif.SelectedIndex == -1)
             {
                 MessageBox.Show("Tous les champs doivent être remplis.", "Information");
+            }
+            else if(DateTime.Compare(dateTDebut.Value,dateTFin.Value) > 0)
+            {
+                MessageBox.Show("La date de fin est anterieure a la date de debut.", "Information");
             }
             else
             {
@@ -88,6 +94,7 @@ namespace AppMediatek.view
                         AddAbsence();
                     }
                     this.Close();
+                    this.Dispose();
                 }
             }
         }
@@ -110,12 +117,9 @@ namespace AppMediatek.view
 
         private void UpdateAbsence()
         {
-            controller.UpdateAbsence(new Absence(
-                idPersonnel,
-                dateTDebut.Value,
-                cmbMotif.SelectedIndex + 1,
-                dateTFin.Value,
-                null));
+            Absence updatedAbsence = new Absence(idPersonnel, dateTDebut.Value, cmbMotif.SelectedIndex + 1, dateTFin.Value, null);
+            Absence AbsenceToUpdate = new Absence(idPersonnel, DateTime.Parse(dateDebutToChange), 1, DateTime.Today, null);
+            controller.UpdateAbsence(updatedAbsence, AbsenceToUpdate);
         }
         ///// <summary>
         ///// Affiche les développeurs

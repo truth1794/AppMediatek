@@ -53,13 +53,6 @@ namespace AppMediatek.dal
                         Log.Debug("PersonnelAccess.GetLePersonnel nb records = {0}", records.Count);
                         foreach (Object[] record in records)
                         {
-                            //Log.Debug("PersonnelAccess.GetLePersonnel Profil : id={0} nom={1}", record[5], record[6]);
-                            //Log.Debug("PersonnelAccess.GetLePersonnel Developpeur : id={0} nom={1} prenom={2} tel={3} mail={4} ", record[0], record[1], record[2], record[3], record[4]);
-                            //Profil profil = new Profil((int)record[5], (string)record[6]);
-
-                            //Absence absent = new Absence((int)record[0], (int)record[1], (string)record[2],
-                            //    (string)record[3], (string)record[4], (string)record[5]);
-
                             Absence absent = new Absence((int)record[0], (DateTime)record[1], (int)record[2],
                                 (DateTime)record[3],(string)record[4]);
                             absences.Add(absent);
@@ -116,19 +109,22 @@ namespace AppMediatek.dal
         /// Demande de modification d'un développeur
         /// </summary>
         /// <param name="absence">objet developpeur à modifier</param>
-        public void UpdateAbsence(Absence absence)
+        public void UpdateAbsence(Absence updatedAbsence, Absence absenceToChange)
         {
             if (access.Manager != null)
             {
-                string req = "update absence set datedebut=@datedebut, idmotif = @idmotif, datefin = @datefin ";
-                req += "where idpersonnel= @idpersonnel;";
-                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd 00:00:00.fff");
-                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd 00:00:00.fff");
+                string req = "update absence set datedebut = @datedebut, idmotif = @idmotif, datefin = @datefin ";
+                req += "where idpersonnel = @idpersonnel ";
+                req += "and datedebut = @dateDebutToUpdate;";
+                string sqlDateDebut = updatedAbsence.DateDebut.ToString("yyyy-MM-dd 00:00:00");
+                string sqlDateFin = updatedAbsence.DateFin.ToString("yyyy-MM-dd 00:00:00");
+                string sqlDateDebutToUpdate = absenceToChange.DateDebut.ToString("yyyy-MM-dd HH:mm:ss");
                 Dictionary<string, object> parameters = new Dictionary<string, object> {
-                    { "@idpersonnel", absence.Idpersonnel },
-                    { "@datedebut", sqlFormatDateDebut },
-                    { "@idmotif", absence.IdMotif },
-                    { "@datefin", sqlFormatDateFin}
+                    { "@idpersonnel", updatedAbsence.Idpersonnel },
+                    { "@datedebut", sqlDateDebut },
+                    { "@dateDebutToUpdate", sqlDateDebutToUpdate },
+                    { "@idmotif", updatedAbsence.IdMotif },
+                    { "@datefin", sqlDateFin}
                 };
                 try
                 {

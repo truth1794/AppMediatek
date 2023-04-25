@@ -29,7 +29,6 @@ namespace AppMediatek.view
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnAjout = new System.Windows.Forms.Button();
             this.btnModif = new System.Windows.Forms.Button();
             this.btnSuppr = new System.Windows.Forms.Button();
@@ -43,15 +42,6 @@ namespace AppMediatek.view
             this.colMail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colIdService = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(659, 67);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(135, 36);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Sauvegarder";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnAjout
             // 
@@ -111,6 +101,7 @@ namespace AppMediatek.view
             this.lstVPersonnel.TabIndex = 6;
             this.lstVPersonnel.UseCompatibleStateImageBehavior = false;
             this.lstVPersonnel.View = System.Windows.Forms.View.Details;
+            this.lstVPersonnel.SelectedIndexChanged += new System.EventHandler(this.lstVPersonnel_SelectedIndexChanged);
             // 
             // colId
             // 
@@ -157,7 +148,6 @@ namespace AppMediatek.view
             this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.btnModif);
             this.Controls.Add(this.btnAjout);
-            this.Controls.Add(this.btnSave);
             this.Name = "FrmGestion";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.FrmGestion_Load);
@@ -166,8 +156,6 @@ namespace AppMediatek.view
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAjout;
         private System.Windows.Forms.Button btnModif;
         private System.Windows.Forms.Button btnSuppr;

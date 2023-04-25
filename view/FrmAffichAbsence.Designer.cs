@@ -33,19 +33,19 @@ namespace AppMediatek.view
             this.colDateDebut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateFin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colMotif = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colIdMotif = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblNomDef = new System.Windows.Forms.Label();
             this.lblPrenomDef = new System.Windows.Forms.Label();
             this.lblServiceDef = new System.Windows.Forms.Label();
             this.btnSuppr = new System.Windows.Forms.Button();
             this.btnModif = new System.Windows.Forms.Button();
             this.btnAjout = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
             this.lblNbAbsencesDef = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblService = new System.Windows.Forms.Label();
             this.lblNbAbsences = new System.Windows.Forms.Label();
-            this.colIdMotif = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lstVAbsences
@@ -63,6 +63,7 @@ namespace AppMediatek.view
             this.lstVAbsences.TabIndex = 0;
             this.lstVAbsences.UseCompatibleStateImageBehavior = false;
             this.lstVAbsences.View = System.Windows.Forms.View.Details;
+            this.lstVAbsences.SelectedIndexChanged += new System.EventHandler(this.lstVAbsences_SelectedIndexChanged);
             // 
             // colDateDebut
             // 
@@ -78,6 +79,10 @@ namespace AppMediatek.view
             // 
             this.colMotif.Text = "Motif";
             this.colMotif.Width = 171;
+            // 
+            // colIdMotif
+            // 
+            this.colIdMotif.Width = 0;
             // 
             // lblNomDef
             // 
@@ -139,14 +144,15 @@ namespace AppMediatek.view
             this.btnAjout.UseVisualStyleBackColor = true;
             this.btnAjout.Click += new System.EventHandler(this.btnAjout_Click);
             // 
-            // button1
+            // btnRetour
             // 
-            this.button1.Location = new System.Drawing.Point(528, 305);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Retour";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRetour.Location = new System.Drawing.Point(528, 305);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(135, 36);
+            this.btnRetour.TabIndex = 7;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // lblNbAbsencesDef
             // 
@@ -198,10 +204,6 @@ namespace AppMediatek.view
             this.lblNbAbsences.TabIndex = 12;
             this.lblNbAbsences.Text = "label4";
             // 
-            // colIdMotif
-            // 
-            this.colIdMotif.Width = 0;
-            // 
             // FrmAffichAbsence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -212,7 +214,7 @@ namespace AppMediatek.view
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.lblNbAbsencesDef);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.btnModif);
             this.Controls.Add(this.btnAjout);
@@ -239,7 +241,7 @@ namespace AppMediatek.view
         private System.Windows.Forms.Button btnSuppr;
         private System.Windows.Forms.Button btnModif;
         private System.Windows.Forms.Button btnAjout;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRetour;
         private System.Windows.Forms.Label lblNbAbsencesDef;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
