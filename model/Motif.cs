@@ -1,7 +1,7 @@
 ﻿namespace AppMediatek.Model
 {
     /// <summary>
-    /// Classe métier liée à la table Developpeur
+    /// Classe métier liée à la table Motif
     /// </summary>
     public class Motif
     {

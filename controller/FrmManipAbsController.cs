@@ -11,17 +11,9 @@ namespace AppMediatek.controller
     public class FrmManipAbsController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Personnel
-        /// </summary>
-        private readonly PersonnelAcces personnelAcces;
-        /// <summary>
         /// objet d'accès aux opérations possible sur Absence
         /// </summary>
         private readonly AbsenceAcces absenceAcces;
-        /// <summary>
-        /// objet d'accès aux opérations possible sur Service
-        /// </summary>
-        private readonly ServiceAcces serviceAcces;
         /// <summary>
         /// objet d'accès aux opérations possible sur Motif
         /// </summary>
@@ -32,20 +24,9 @@ namespace AppMediatek.controller
         /// </summary>
         public FrmManipAbsController()
         {
-            //personnelAcces = new PersonnelAcces();
             absenceAcces = new AbsenceAcces();
-            //serviceAcces = new ServiceAcces();
             motifAcces = new MotifAcces();
         }
-
-        /// <summary>
-        /// Récupère et retourne les infos du Personnels
-        /// </summary>
-        /// <returns>liste des développeurs</returns>
-        //public List<Personnel> GetInfoPerso()
-        //{
-        //    return personnelAcces.getInfoPerso();
-        //}
 
         /// <summary>
         /// Récupère et retourne les absences du personnel selectionne
@@ -57,37 +38,31 @@ namespace AppMediatek.controller
         }
 
         /// <summary>
-        /// Récupère et retourne les absences du personnel selectionne
+        /// Récupère et retourne les motifs
         /// </summary>
-        /// <returns>liste des absences</returns>
+        /// <returns>liste des motifs</returns>
         public List<Motif> GetMotifs()
         {
             return motifAcces.GetMotifs();
         }
+
         /// <summary>
-        /// Ajoute un personnel a la base de donnee
+        /// Ajoute une absence
         /// </summary>
-        /// <param name="personnel">objet personnel à ajouter</param>
+        /// <param name="absence">objet absence à ajouter</param>
         public void AddAbsence(Absence absence)
         {
             absenceAcces.AddAbsence(absence);
         }
 
-
+        /// <summary>
+        /// Modification d'une absence
+        /// </summary>
+        /// <param name="updatedAbsence">object contenant l'absence mise a jour</param>
+        /// <param name="absenceToUpdate">object contenant l'absence a mettre a jour</param>
         public void UpdateAbsence(Absence updatedAbsence, Absence absenceToUpdate)
         {
             absenceAcces.UpdateAbsence(updatedAbsence, absenceToUpdate);
         }
-
-       
-        /// <summary>
-        /// Modifie un personnel de la base de donnee
-        /// </summary>
-        /// <param name="personnel">objet personnel à modifier</param>
-        //public void UpdatePersonnel(Personnel personnel)
-        //{
-        //    personnelAcces.UpdatePersonnel(personnel);
-        //}
-
     }
 }

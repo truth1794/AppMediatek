@@ -6,7 +6,7 @@ using Serilog;
 namespace AppMediatek.dal
 {
     /// <summary>
-    /// Classe permettant de gérer les demandes concernant les developpeurs
+    /// Classe permettant de gérer les demandes concernant le personnel
     /// </summary>
     public class PersonnelAcces
     {
@@ -24,9 +24,9 @@ namespace AppMediatek.dal
         }
 
         /// <summary>
-        /// Récupère et retourne les développeurs
+        /// Récupère et retourne le personnel
         /// </summary>
-        /// <returns>liste des développeurs</returns>
+        /// <returns>liste du personnel</returns>
         public List<Personnel> GetLePersonnel()
         {
             List<Personnel> lePersonnel = new List<Personnel>();
@@ -44,9 +44,6 @@ namespace AppMediatek.dal
                         Log.Debug("PersonnelAccess.GetLePersonnel nb records = {0}", records.Count);
                         foreach (Object[] record in records)
                         {
-                            //Log.Debug("PersonnelAccess.GetLePersonnel Profil : id={0} nom={1}", record[5], record[6]);
-                            //Log.Debug("PersonnelAccess.GetLePersonnel Developpeur : id={0} nom={1} prenom={2} tel={3} mail={4} ", record[0], record[1], record[2], record[3], record[4]);
-                            //Profil profil = new Profil((int)record[5], (string)record[6]);
                             Personnel perso = new Personnel((int)record[0], (int)record[1], (string)record[2],
                                 (string)record[3], (string)record[4], (string)record[5], (string)record[6]);
                             lePersonnel.Add(perso);
@@ -56,7 +53,7 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.GetLesDeveloppeurs catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("PersonnelAccess.GetLesDeveloppeurs catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
@@ -64,9 +61,9 @@ namespace AppMediatek.dal
         }
 
         /// <summary>
-        /// Demande de suppression d'un développeur
+        /// Demande de suppression d'un personnel
         /// </summary>
-        /// <param name="personnel">objet developpeur à supprimer</param>
+        /// <param name="personnel">objet personnel à supprimer</param>
         public void DelPersonnel(Personnel personnel)
         {
             if (access.Manager != null)
@@ -88,8 +85,8 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req0, e.Message);
-                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req1, e.Message);
+                    Log.Error("PersonnelAccess.DelDepveloppeur catch req={0} erreur={1}", req0, e.Message);
+                    Log.Error("PersonnelAccess.DelDepveloppeur catch req={0} erreur={1}", req1, e.Message);
                     Environment.Exit(0);
                 }
             }
@@ -98,7 +95,7 @@ namespace AppMediatek.dal
         /// <summary>
         /// Ajouter un personnel
         /// </summary>
-        /// <param name="personnel">objet developpeur à ajouter</param>
+        /// <param name="personnel">objet personnel à ajouter</param>
         public void AddPersonnel(Personnel personnel)
         {
             if (access.Manager != null)
@@ -119,16 +116,16 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.AddDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("PersonnelAccess.AddDeveloppeur catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
         }
 
         /// <summary>
-        /// Demande de modification d'un développeur
+        /// Demande de modification d'un personnel
         /// </summary>
-        /// <param name="personnel">objet developpeur à modifier</param>
+        /// <param name="personnel">objet personnel à modifier</param>
         public void UpdatePersonnel(Personnel personnel)
         {
             if (access.Manager != null)
@@ -150,7 +147,7 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.UpdateDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("PersonnelAccess.UpdatePersonnel catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }

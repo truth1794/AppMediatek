@@ -11,17 +11,9 @@ namespace AppMediatek.controller
     public class FrmAffichAbsController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Personnel
-        /// </summary>
-        private readonly PersonnelAcces personnelAcces;
-        /// <summary>
         /// objet d'accès aux opérations possible sur Absence
         /// </summary>
         private readonly AbsenceAcces absenceAcces;
-        /// <summary>
-        /// objet d'accès aux opérations possible sur Service
-        /// </summary>
-        private readonly ServiceAcces serviceAcces;
         /// <summary>
         /// objet d'accès aux opérations possible sur Motif
         /// </summary>
@@ -32,20 +24,9 @@ namespace AppMediatek.controller
         /// </summary>
         public FrmAffichAbsController()
         {
-            personnelAcces = new PersonnelAcces();
             absenceAcces = new AbsenceAcces();
-            serviceAcces = new ServiceAcces();
             motifAcces = new MotifAcces();
         }
-
-        /// <summary>
-        /// Récupère et retourne les infos du Personnels
-        /// </summary>
-        /// <returns>liste des développeurs</returns>
-        //public List<Personnel> GetInfoPerso()
-        //{
-        //    return personnelAcces.getInfoPerso();
-        //}
 
         /// <summary>
         /// Récupère et retourne les absences du personnel selectionne
@@ -57,36 +38,21 @@ namespace AppMediatek.controller
         }
 
         /// <summary>
-        /// Récupère et retourne les absences du personnel selectionne
+        /// Récupère et retourne les motifs
         /// </summary>
-        /// <returns>liste des absences</returns>
+        /// <returns>liste des motifs</returns>
         public List<Motif> GetMotifs()
         {
             return motifAcces.GetMotifs();
         }
 
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à supprimer</param>
         public void DelAbsence(Absence absence)
         {
             absenceAcces.DelAbsence(absence);
         }
-
-        /// <summary>
-        /// Ajoute un personnel a la base de donnee
-        /// </summary>
-        /// <param name="personnel">objet personnel à ajouter</param>
-        //public void AddAbsence(Absence absence)
-        //{
-        //    absenceAcces.AddAbsence(absence);
-        //}
-
-        /// <summary>
-        /// Modifie un personnel de la base de donnee
-        /// </summary>
-        /// <param name="personnel">objet personnel à modifier</param>
-        //public void UpdateAbsence(Absence absence)
-        //{
-        //    absenceAcces.UpdateAbsence(absence);
-        //}
-
     }
 }

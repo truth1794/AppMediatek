@@ -7,7 +7,7 @@ using AppMediatek.Model;
 namespace AppMediatek.view
 {
     /// <summary>
-    /// Fenêtre d'affichage des développeurs et de leurs profils
+    /// Fenêtre d'affichage du personnels et de ses informations
     /// </summary>
     public partial class FrmGestion : Form
     {
@@ -16,19 +16,10 @@ namespace AppMediatek.view
         /// </summary>
         private Boolean modifEnCours = false;
         /// <summary>
-        /// Objet pour gérer la liste des développeurs
-        /// </summary>
-        private readonly BindingSource bdgPersonnels = new BindingSource();
-        /// <summary>
-        /// Objet pour gérer la liste des profils
-        /// </summary>
-        private readonly BindingSource bdgAbsences = new BindingSource();
-        /// <summary>
         /// Controleur de la fenêtre
         /// </summary>
         private FrmGestionController controller;
 
-        private List<Personnel> lePersonnel = new List<Personnel>();
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
@@ -38,13 +29,9 @@ namespace AppMediatek.view
             Init();
         }
 
-        public void FrmGestion_Load(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// Initialisations :
-        /// Création du controleur et remplissage des listes
+        /// Création du controleur, remplissage de la liste et desactivation des boutons
         /// </summary>
         private void Init()
         {
@@ -54,26 +41,34 @@ namespace AppMediatek.view
             btnModif.Enabled = false;
             btnSuppr.Enabled = false;
         }
+
+        /// <summary>
+        /// Mise a jour du Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListRefresh(object sender, FormClosingEventArgs e)
         {
-            lstVPersonnel.Items.Clear();
-            RemplirListePersonnels();
+            ListUpdate();
             btnAfficheAbs.Enabled = false;
             btnModif.Enabled = false;
             btnSuppr.Enabled = false;
         }
 
+        /// <summary>
+        /// Mise a jour de la liste
+        /// </summary>
         private void ListUpdate()
         {
             lstVPersonnel.Items.Clear();
             RemplirListePersonnels();
         }
         /// <summary>
-        /// Affiche les développeurs
+        /// Remplir la liste du personnels
         /// </summary>
         private void RemplirListePersonnels()
         {
-            lePersonnel = controller.GetLePersonnel();
+            List<Personnel> lePersonnel = controller.GetLePersonnel();
             string[] perso = new string[8];
             for (int i = 0; i < lePersonnel.Count; i++)
             {
@@ -93,6 +88,11 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Bouton gerant la demande d'affichage des absences du personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAfficheAbs_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
@@ -114,6 +114,11 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Bouton gerant l'ajout d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjout_Click(object sender, EventArgs e)
         {
             FrmAjoutModif frm = new FrmAjoutModif(null,modifEnCours);
@@ -122,6 +127,11 @@ namespace AppMediatek.view
             frm.ShowDialog();
         }
 
+        /// <summary>
+        /// Bouton gerant la modificationd'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModif_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
@@ -143,6 +153,11 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Bouton gerant la suppression d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSuppr_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
@@ -162,6 +177,11 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Evenement gerant la detection de la selection d'une ligne dans la liste
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstVPersonnel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(lstVPersonnel.SelectedIndices.Count != 1)

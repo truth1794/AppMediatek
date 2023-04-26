@@ -15,17 +15,10 @@ namespace AppMediatek.controller
         /// </summary>
         private readonly PersonnelAcces personnelAcces;
         /// <summary>
-        /// objet d'accès aux opérations possible sur Absence
-        /// </summary>
-        private readonly AbsenceAcces absenceAcces;
-        /// <summary>
         /// objet d'accès aux opérations possible sur Service
         /// </summary>
         private readonly ServiceAcces serviceAcces;
-        /// <summary>
-        /// objet d'accès aux opérations possible sur Motif
-        /// </summary>
-        private readonly MotifAcces motifAcces;
+
 
         /// <summary>
         /// Récupère les acces aux données
@@ -33,24 +26,14 @@ namespace AppMediatek.controller
         public FrmAjoutModifController()
         {
             personnelAcces = new PersonnelAcces();
-            absenceAcces = new AbsenceAcces();
             serviceAcces = new ServiceAcces();
-            motifAcces = new MotifAcces();
         }
 
-        /// <summary>
-        /// Récupère et retourne les infos du Personnels
-        /// </summary>
-        /// <returns>liste des développeurs</returns>
-        //public List<Personnel> GetInfoPerso()
-        //{
-        //    return personnelAcces.getInfoPerso();
-        //}
 
         /// <summary>
-        /// Récupère et retourne les infos du Personnels
+        /// Récupère et retourne les differents services
         /// </summary>
-        /// <returns>liste des développeurs</returns>
+        /// <returns>liste des services</returns>
         public List<Service> GetServices()
         {
             return serviceAcces.GetServices();

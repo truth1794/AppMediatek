@@ -50,7 +50,7 @@ namespace AppMediatek.view
             this.grpLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpLogin.Location = new System.Drawing.Point(12, 12);
             this.grpLogin.Name = "grpLogin";
-            this.grpLogin.Size = new System.Drawing.Size(445, 231);
+            this.grpLogin.Size = new System.Drawing.Size(368, 207);
             this.grpLogin.TabIndex = 0;
             this.grpLogin.TabStop = false;
             // 
@@ -60,7 +60,7 @@ namespace AppMediatek.view
             this.groupBox2.Controls.Add(this.txtPwd);
             this.groupBox2.Location = new System.Drawing.Point(6, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(433, 66);
+            this.groupBox2.Size = new System.Drawing.Size(352, 66);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -68,7 +68,7 @@ namespace AppMediatek.view
             // 
             this.lblPwd.AutoSize = true;
             this.lblPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPwd.Location = new System.Drawing.Point(43, 31);
+            this.lblPwd.Location = new System.Drawing.Point(31, 26);
             this.lblPwd.Name = "lblPwd";
             this.lblPwd.Size = new System.Drawing.Size(120, 20);
             this.lblPwd.TabIndex = 3;
@@ -76,18 +76,18 @@ namespace AppMediatek.view
             // 
             // txtPwd
             // 
-            this.txtPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPwd.Location = new System.Drawing.Point(169, 21);
+            this.txtPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPwd.Location = new System.Drawing.Point(157, 23);
             this.txtPwd.Name = "txtPwd";
-            this.txtPwd.Size = new System.Drawing.Size(258, 34);
+            this.txtPwd.Size = new System.Drawing.Size(185, 27);
             this.txtPwd.TabIndex = 2;
             // 
             // btnConnect
             // 
             this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(308, 165);
+            this.btnConnect.Location = new System.Drawing.Point(226, 165);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(131, 57);
+            this.btnConnect.Size = new System.Drawing.Size(122, 29);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Se connecter";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@ namespace AppMediatek.view
             this.groupBox1.Controls.Add(this.txtUsername);
             this.groupBox1.Location = new System.Drawing.Point(6, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 66);
+            this.groupBox1.Size = new System.Drawing.Size(352, 66);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -107,7 +107,7 @@ namespace AppMediatek.view
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(18, 31);
+            this.lblUsername.Location = new System.Drawing.Point(6, 31);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(145, 20);
             this.lblUsername.TabIndex = 2;
@@ -115,21 +115,20 @@ namespace AppMediatek.view
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(169, 21);
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(157, 24);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(258, 34);
+            this.txtUsername.Size = new System.Drawing.Size(185, 27);
             this.txtUsername.TabIndex = 3;
             // 
             // FrmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 252);
+            this.ClientSize = new System.Drawing.Size(390, 237);
             this.Controls.Add(this.grpLogin);
             this.Name = "FrmAuthentification";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FrmAuthentification_Load);
             this.grpLogin.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

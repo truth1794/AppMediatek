@@ -2,7 +2,7 @@
 namespace AppMediatek.Model
 {
     /// <summary>
-    /// Classe métier liée à la table Developpeur
+    /// Classe métier liée à la table Personnel
     /// </summary>
     public class Personnel
     {

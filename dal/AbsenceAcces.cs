@@ -6,7 +6,7 @@ using Serilog;
 namespace AppMediatek.dal
 {
     /// <summary>
-    /// Classe permettant de gérer les demandes concernant les developpeurs
+    /// Classe gerant les requetes SQL sur la base de donnee lies a la table Absence
     /// </summary>
     public class AbsenceAcces
     {
@@ -24,19 +24,14 @@ namespace AppMediatek.dal
         }
 
         /// <summary>
-        /// Récupère et retourne les développeurs
+        /// Récupère et retourne les absences
         /// </summary>
-        /// <returns>liste des développeurs</returns>
+        /// <returns>liste des absences</returns>
         public List<Absence> GetAbsences(int idPersonnel)
         {
             List<Absence> absences = new List<Absence>();
             if (access.Manager != null)
             {
-                //string req = "select p.nom as nom, p.prenom as prenom, a.datedebut, a.datefin, m.libelle as motif, s.nom as service ";
-                //req += "from personnel p, absence a, motif m, service s ";
-                //req += "where p.idpersonnel in ";
-                //req += "(select a.idpersonnel from absence) and p.idservice = s.idservice ";
-                //req += "order by nom, prenom;";
                 string req = "select a.idpersonnel, a.datedebut, a.idmotif, a.datefin, m.libelle ";
                 req += "from absence a, personnel p, motif m ";
                 req += "where p.idpersonnel in ";
@@ -44,13 +39,12 @@ namespace AppMediatek.dal
                 req += "p.idpersonnel = " + idPersonnel.ToString() + " and ";
                 req += "m.idmotif = a.idmotif ";
                 req += "order by a.datedebut;";
-                //req += "order by nom, prenom;";
                 try
                 {
                     List<Object[]> records = access.Manager.ReqSelect(req);
                     if (records != null)
                     {
-                        Log.Debug("PersonnelAccess.GetLePersonnel nb records = {0}", records.Count);
+                        Log.Debug("AbsenceAcces.GetAbsences nb records = {0}", records.Count);
                         foreach (Object[] record in records)
                         {
                             Absence absent = new Absence((int)record[0], (DateTime)record[1], (int)record[2],
@@ -62,7 +56,7 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.GetLesDeveloppeurs catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("AbsenceAcces.GetAbsences catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
@@ -77,10 +71,6 @@ namespace AppMediatek.dal
         {
             if (access.Manager != null)
             {
-
-                //string req = "SET FOREIGN_KEY_CHECKS=0; ";
-                //req += "insert into absence(idpersonnel,datedebut, idmotif, datefin) ";
-                //req += "values (@idpersonnel,@datedebut, @idmotif, @datefin); ";
                 //req += "SET FOREIGN_KEY_CHECKS = 1;";
                 string req = "insert into absence(idpersonnel,datedebut, idmotif, datefin) ";
                 req += "values (@idpersonnel,@datedebut, @idmotif, @datefin); ";
@@ -99,16 +89,17 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.AddDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("AbsenceAcces.AddAbsence catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
         }
 
         /// <summary>
-        /// Demande de modification d'un développeur
+        /// Demande de modification d'une absence
         /// </summary>
-        /// <param name="absence">objet developpeur à modifier</param>
+        /// <param name="updatedAbsence">objet absence mis a jour</param>
+        /// <param name="absenceToChange">objet absence à modifier</param>
         public void UpdateAbsence(Absence updatedAbsence, Absence absenceToChange)
         {
             if (access.Manager != null)
@@ -133,15 +124,15 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.UpdateDeveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("AbsenceAcces.UpdateAbsence catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
         }
         /// <summary>
-        /// Demande de suppression d'un développeur
+        /// Demande de suppression d'une absence
         /// </summary>
-        /// <param name="absence">objet developpeur à supprimer</param>
+        /// <param name="absence">objet absence à supprimer</param>
         public void DelAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -164,7 +155,7 @@ namespace AppMediatek.dal
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Log.Error("DeveloppeurAccess.DelDepveloppeur catch req={0} erreur={1}", req, e.Message);
+                    Log.Error("AbsenceAcces.DelAbsence catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }

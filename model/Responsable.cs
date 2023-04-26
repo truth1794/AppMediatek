@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AppMediatek.Model
 {
     // <summary>
-    /// Classe métier interne pour mémoriser les informations d'authentification
+    /// Classe métier liée à la table Responsable
     /// </summary>
     public class Responsable
     {

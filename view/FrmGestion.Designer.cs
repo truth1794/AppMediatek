@@ -150,7 +150,6 @@ namespace AppMediatek.view
             this.Controls.Add(this.btnAjout);
             this.Name = "FrmGestion";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.FrmGestion_Load);
             this.ResumeLayout(false);
 
         }

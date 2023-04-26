@@ -45,101 +45,102 @@ namespace AppMediatek.view
             // 
             // txtNom
             // 
-            this.txtNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNom.Location = new System.Drawing.Point(101, 35);
+            this.txtNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNom.Location = new System.Drawing.Point(105, 50);
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(178, 30);
+            this.txtNom.Size = new System.Drawing.Size(178, 27);
             this.txtNom.TabIndex = 0;
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrenom.Location = new System.Drawing.Point(396, 35);
+            this.txtPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrenom.Location = new System.Drawing.Point(105, 109);
             this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(178, 30);
+            this.txtPrenom.Size = new System.Drawing.Size(178, 27);
             this.txtPrenom.TabIndex = 1;
             // 
             // txtTel
             // 
-            this.txtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTel.Location = new System.Drawing.Point(101, 125);
+            this.txtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTel.Location = new System.Drawing.Point(105, 171);
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(178, 30);
+            this.txtTel.Size = new System.Drawing.Size(178, 27);
             this.txtTel.TabIndex = 2;
             // 
             // txtMail
             // 
-            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMail.Location = new System.Drawing.Point(396, 125);
+            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMail.Location = new System.Drawing.Point(105, 233);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(178, 30);
+            this.txtMail.Size = new System.Drawing.Size(178, 27);
             this.txtMail.TabIndex = 3;
             // 
             // cmbService
             // 
-            this.cmbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbService.FormattingEnabled = true;
-            this.cmbService.Location = new System.Drawing.Point(101, 210);
+            this.cmbService.Location = new System.Drawing.Point(105, 293);
             this.cmbService.Name = "cmbService";
-            this.cmbService.Size = new System.Drawing.Size(178, 33);
+            this.cmbService.Size = new System.Drawing.Size(178, 28);
             this.cmbService.TabIndex = 4;
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNom.Location = new System.Drawing.Point(37, 40);
+            this.lblNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNom.Location = new System.Drawing.Point(41, 57);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(64, 25);
+            this.lblNom.Size = new System.Drawing.Size(54, 20);
             this.lblNom.TabIndex = 5;
             this.lblNom.Text = "Nom :";
             // 
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrenom.Location = new System.Drawing.Point(299, 40);
+            this.lblPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrenom.Location = new System.Drawing.Point(18, 116);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(91, 25);
+            this.lblPrenom.Size = new System.Drawing.Size(77, 20);
             this.lblPrenom.TabIndex = 6;
             this.lblPrenom.Text = "Prenom :";
             // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
-            this.lblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTel.Location = new System.Drawing.Point(50, 128);
+            this.lblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTel.Location = new System.Drawing.Point(53, 178);
             this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(51, 25);
+            this.lblTel.Size = new System.Drawing.Size(42, 20);
             this.lblTel.TabIndex = 7;
             this.lblTel.Text = "Tel :";
             // 
             // lblMail
             // 
             this.lblMail.AutoSize = true;
-            this.lblMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMail.Location = new System.Drawing.Point(319, 130);
+            this.lblMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMail.Location = new System.Drawing.Point(34, 236);
             this.lblMail.Name = "lblMail";
-            this.lblMail.Size = new System.Drawing.Size(71, 25);
+            this.lblMail.Size = new System.Drawing.Size(61, 20);
             this.lblMail.TabIndex = 8;
             this.lblMail.Text = "Email :";
             // 
             // lblService
             // 
             this.lblService.AutoSize = true;
-            this.lblService.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblService.Location = new System.Drawing.Point(12, 218);
+            this.lblService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblService.Location = new System.Drawing.Point(20, 301);
             this.lblService.Name = "lblService";
-            this.lblService.Size = new System.Drawing.Size(89, 25);
+            this.lblService.Size = new System.Drawing.Size(75, 20);
             this.lblService.TabIndex = 9;
             this.lblService.Text = "Service :";
             // 
             // btnValider
             // 
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(324, 210);
+            this.btnValider.Location = new System.Drawing.Point(57, 359);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(118, 41);
+            this.btnValider.Size = new System.Drawing.Size(97, 41);
             this.btnValider.TabIndex = 10;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
@@ -148,9 +149,9 @@ namespace AppMediatek.view
             // btnAnnuler
             // 
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(456, 210);
+            this.btnAnnuler.Location = new System.Drawing.Point(186, 359);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(118, 41);
+            this.btnAnnuler.Size = new System.Drawing.Size(97, 41);
             this.btnAnnuler.TabIndex = 11;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
@@ -160,7 +161,7 @@ namespace AppMediatek.view
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 282);
+            this.ClientSize = new System.Drawing.Size(349, 436);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.lblService);

@@ -8,9 +8,24 @@ namespace AppMediatek.view
 {
     public partial class FrmAjoutModif : Form
     {
+        /// <summary>
+        /// Controleur de la fenêtre
+        /// </summary>
         private FrmAjoutModifController controller;
+        /// <summary>
+        /// bouleen permetant de de savoir si un personnel est en cours de modification
+        /// </summary>
         private bool modifEnCours = false;
+        /// <summary>
+        /// entier contenant l'ID du personnel
+        /// </summary>
         private int idPersonnel;
+
+        /// <summary>
+        /// construction des composants graphiques et appel des autres initialisations
+        /// </summary>
+        /// <param name="selectData">Array de string contenant les informations du personnel selectionne</param>
+        /// <param name="modif"></param>
         public FrmAjoutModif(string[] selectData,bool modif)
         {
             InitializeComponent();
@@ -18,12 +33,21 @@ namespace AppMediatek.view
             modifEnCours = modif;
         }
 
+        /// <summary>
+        /// Initialisations :
+        /// Création du controleur, remplissage de la liste, desactivation des boutons
+        /// </summary>
+        /// <param name="selectData">Array de string contenant les informations du personnel selectionne</param>
         private void Init(string[] selectData)
         {
             controller = new FrmAjoutModifController();
             PopulateFields(selectData);
         }
 
+        /// <summary>
+        /// Remplissage des TextFields avec les informations du personnel selectionne
+        /// </summary>
+        /// <param name="data">Array de string contenant les informations du personnel selectionne</param>
         private void PopulateFields(string[] data)
         {
             List<Service> lesServices = controller.GetServices();
@@ -42,17 +66,29 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Appel de la fonction d'ajout d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
         private void AddPerso(Personnel personnel)
         {
             controller.AddPersonnel(personnel);
         }
 
+        /// <summary>
+        /// Appel de la fonction de modification d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
         private void UpdatePerso(Personnel personnel)
         {
             controller.UpdatePersonnel(personnel);
         }
 
-
+        /// <summary>
+        /// Bouton pour valider la modification ou l'ajout d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, EventArgs e)
         {
             string nom = txtNom.Text;
@@ -80,13 +116,20 @@ namespace AppMediatek.view
                         AddPerso(new Personnel(0, idService, service, nom, prenom, tel, mail));
                     }
                     this.Close();
+                    this.Dispose();
                 }  
             }
         }
 
+        /// <summary>
+        /// Bouton pour annuler la modification ou l'ajout d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
     }
 }

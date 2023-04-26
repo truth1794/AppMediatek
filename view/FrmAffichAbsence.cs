@@ -16,27 +16,34 @@ namespace AppMediatek.view
         /// </summary>
         private Boolean modifEnCours = false;
         /// <summary>
-        /// Objet pour gérer la liste des développeurs
-        /// </summary>
-        private readonly BindingSource bdgPersonnels = new BindingSource();
-        /// <summary>
-        /// Objet pour gérer la liste des profils
-        /// </summary>
-        private readonly BindingSource bdgAbsences = new BindingSource();
-        /// <summary>
         /// Controleur de la fenêtre
         /// </summary>
         private FrmAffichAbsController controller;
-
-        //private FrmManipAbsence frm;
-
-        private List<Absence> absences = new List<Absence>();
-
+        /// <summary>
+        /// Controleur de la fenêtre
+        /// </summary>
+        //private List<Absence> absences = new List<Absence>();
+        /// <summary>
+        /// object contenant l'ID du personnel selectionne
+        /// </summary>
         private int idPersonnel;
+        /// <summary>
+        /// object contenant le nom du personnel selectionne
+        /// </summary>
         private string persoNom;
+        /// <summary>
+        /// object contenant le prenom du personnel selectionne
+        /// </summary>
         private string persoPrenom;
+        /// <summary>
+        /// object contenant le service du personnel selectionne
+        /// </summary>
         private string persoService;
+        /// <summary>
+        /// object contenant le nombre d'absences du personnel selectionne
+        /// </summary>
         private int persoNbAsbences;
+
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
@@ -52,7 +59,7 @@ namespace AppMediatek.view
 
         /// <summary>
         /// Initialisations :
-        /// Création du controleur et remplissage des listes
+        /// Création du controleur, remplissage de la liste, desactivation des boutons
         /// </summary>
         private void Init()
         {
@@ -60,57 +67,38 @@ namespace AppMediatek.view
             RemplirListeAbsence(idPersonnel);
             btnModif.Enabled = false;
             btnSuppr.Enabled = false;
-            //RemplirListeAbsents();
-            //EnCourseModifPersonnel(false);
-            //EnCoursModifAbsent(false);
         }
 
-        //protected override void OnActivated(EventArgs e)
-        //{
-        //    ListUpdate();
-        //    modifEnCours = false;
-        //}
-
+        /// <summary>
+        /// Mise a jour de la liste
+        /// </summary>
         private void ListUpdate()
         {
             lstVAbsences.Items.Clear();
             RemplirListeAbsence(idPersonnel);
         }
-        ///// <summary>
-        ///// Affiche les développeurs
-        ///// </summary>
-        //private void RemplirListePersonnels()
-        //{
-        //    //List<Personnel> lePersonnel = controller.GetLePersonnel();
-        //    //bdgPersonnels.DataSource = lePersonnel;
-        //    //dgvDeveloppeurs.DataSource = bdgPersonnels;
-        //    //dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
-        //    //dgvDeveloppeurs.Columns["pwd"].Visible = false;
-        //    //dgvDeveloppeurs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        //    List<Personnel> lePersonnel = controller.GetLePersonnel();
-        //    List<string> personnelNom = new List<string>();
-        //    for (int i = 0; i < lePersonnel.Count; i++)
-        //    {
-        //        personnelNom.Add(lePersonnel[i].Nom + " " + lePersonnel[i].Prenom);
-        //    }
-        //    lstPerso.Items.AddRange(personnelNom.ToArray());
-        //}
 
+        /// <summary>
+        /// Mise a jour du Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListRefresh(object sender, FormClosingEventArgs e)
         {
-            lstVAbsences.Items.Clear();
-            RemplirListeAbsence(idPersonnel);
+            ListUpdate();
             btnModif.Enabled = false;
             btnSuppr.Enabled = false;
+            modifEnCours = false;
         }
 
 
         /// <summary>
-        /// Affiche les développeurs
+        /// Remplissage de la liste
         /// </summary>
+        /// <param name="idPersonnel">ID du personnel selectionne</param> id
         private void RemplirListeAbsence(int idPersonnel)
         {
-            absences = controller.GetAbsences(idPersonnel);
+            List<Absence> absences = controller.GetAbsences(idPersonnel);
             persoNbAsbences = absences.Count;
             string[] perso = new string[4];
             int idPerso = idPersonnel;
@@ -132,6 +120,11 @@ namespace AppMediatek.view
             lblNbAbsences.Text = persoNbAsbences.ToString();
         }
 
+        /// <summary>
+        /// Bouton gerant la demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjout_Click(object sender, EventArgs e)
         {
             FrmManipAbsence frm = new FrmManipAbsence(null,null,0, modifEnCours, idPersonnel);
@@ -139,6 +132,11 @@ namespace AppMediatek.view
             frm.ShowDialog();
         }
 
+        /// <summary>
+        /// Bouton gerant la demande de modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModif_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVAbsences.SelectedIndices;
@@ -149,14 +147,17 @@ namespace AppMediatek.view
                 string dateDebut = data0.Text;
                 string dateFin = data0.SubItems[1].Text;
                 int idMotif = int.Parse(data0.SubItems[3].Text);
-                //string selectionData = lstVPersonnel.Items[0].Text;
                 FrmManipAbsence frm = new FrmManipAbsence(dateDebut, dateFin, idMotif, modifEnCours,idPersonnel);
                 frm.FormClosing += new FormClosingEventHandler(ListRefresh);
-                //this.Hide();
                 frm.ShowDialog();
             }
         }
 
+        /// <summary>
+        /// Bouton gerant la demande de suppresion d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSuppr_Click(object sender, EventArgs e)
         {
             ListView.SelectedIndexCollection indices = lstVAbsences.SelectedIndices;
@@ -173,11 +174,21 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Bouton gerant le retour vers le Form precedent
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRetour_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Evenement gerant la detection de la selection d'une ligne dans la liste
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstVAbsences_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstVAbsences.SelectedIndices.Count != 1)
@@ -191,53 +202,5 @@ namespace AppMediatek.view
                 btnSuppr.Enabled = true;
             }
         }
-
-
-
-
-        //private void btnAjout_Click(object sender, EventArgs e)
-        //{
-        //    FrmAjoutModif frm = new FrmAjoutModif(null, modifEnCours);
-        //    //this.Hide();
-        //    frm.ShowDialog();
-        //}
-
-        //private void btnModif_Click(object sender, EventArgs e)
-        //{
-        //    ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
-        //    if (indices.Count == 1)
-        //    {
-        //        modifEnCours = true;
-        //        ListViewItem data0 = lstVPersonnel.SelectedItems[0];
-        //        string[] data = new string[7];
-        //        data[0] = data0.Text;
-        //        for (int k = 1; k < 7; k++)
-        //        {
-        //            data[k] = data0.SubItems[k].Text;
-        //        }
-        //        //string selectionData = lstVPersonnel.Items[0].Text;
-        //        FrmAjoutModif frm = new FrmAjoutModif(data, modifEnCours);
-        //        //this.Hide();
-        //        frm.ShowDialog();
-        //    }
-        //}
-
-        //private void btnSuppr_Click(object sender, EventArgs e)
-        //{
-        //    ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
-        //    if (indices.Count == 1)
-        //    {
-        //        ListViewItem data0 = lstVPersonnel.SelectedItems[0];
-        //        int idPerso = int.Parse(data0.Text);
-        //        int idService = int.Parse(data0.SubItems[6].Text);
-        //        string service = data0.SubItems[1].Text;
-        //        string nom = data0.SubItems[2].Text;
-        //        string prenom = data0.SubItems[3].Text;
-        //        string tel = data0.SubItems[4].Text;
-        //        string mail = data0.SubItems[5].Text;
-        //        controller.DelPersonnel(new Personnel(idPerso, idService, service, nom, prenom, tel, mail));
-        //        ListUpdate();
-        //    }
-        //}
     }
 }

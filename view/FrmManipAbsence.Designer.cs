@@ -57,6 +57,7 @@ namespace AppMediatek.view
             // 
             // cmbMotif
             // 
+            this.cmbMotif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMotif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMotif.FormattingEnabled = true;
             this.cmbMotif.Location = new System.Drawing.Point(136, 162);

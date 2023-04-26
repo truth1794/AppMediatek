@@ -20,21 +20,25 @@ namespace AppMediatek.view
         /// </summary>
         private FrmManipAbsController controller;
 
-        private List<Absence> absences = new List<Absence>();
-
+        /// <summary>
+        /// Entier contenant l'ID du personnel selectionne
+        /// </summary>
         private int idPersonnel;
+        /// <summary>
+        /// chaine contenant la date de debut de l'absence a changer
+        /// </summary>
         private string dateDebutToChange;
 
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="idMotif"></param>
+        /// <param name="modifEnCours"></param>
+        /// <param name="idPersonnel"></param>
         public FrmManipAbsence(string dateDebut, string dateFin, int idMotif, bool modifEnCours, int idPersonnel)
         {
-            //dateTDebut.da
-            //idPersonnel = int.Parse(data[0]);
-            //persoNom = data[2];
-            //persoPrenom = data[3];
-            //persoService = data[1];
             InitializeComponent();
             Init(dateDebut, dateFin, idMotif, modifEnCours, idPersonnel);
         }
@@ -43,6 +47,11 @@ namespace AppMediatek.view
         /// Initialisations :
         /// Création du controleur et remplissage des listes
         /// </summary>
+        /// <param name="dateDebut"></param>
+        /// <param name="dateFin"></param>
+        /// <param name="idMotif"></param>
+        /// <param name="modifEnCours"></param>
+        /// <param name="idPersonnel"></param>
         private void Init(string dateDebut, string dateFin, int idMotif, bool modifEnCours, int idPersonnel)
         {
             controller = new FrmManipAbsController();
@@ -65,11 +74,13 @@ namespace AppMediatek.view
             this.modifEnCours = modifEnCours;
             this.idPersonnel = idPersonnel;
             dateDebutToChange = dateDebut;
-            //RemplirListeAbsents();
-            //EnCourseModifPersonnel(false);
-            //EnCoursModifAbsent(false);
         }
 
+        /// <summary>
+        /// Bouton de validation de la modification ou l'ajout d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (cmbMotif.SelectedIndex == -1)
@@ -99,12 +110,20 @@ namespace AppMediatek.view
             }
         }
 
+        /// <summary>
+        /// Bouton d'annulation de la modification ou l'ajout d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            this.Dispose();
         }
 
-
+        /// <summary>
+        /// Appel de la fonction pour ajouter une absence
+        /// </summary>
         private void AddAbsence()
         {
             controller.AddAbsence(new Absence(
@@ -115,100 +134,14 @@ namespace AppMediatek.view
                 null));
         }
 
+        /// <summary>
+        /// Appel de la fonction pour mettre a jour une absence
+        /// </summary>
         private void UpdateAbsence()
         {
             Absence updatedAbsence = new Absence(idPersonnel, dateTDebut.Value, cmbMotif.SelectedIndex + 1, dateTFin.Value, null);
             Absence AbsenceToUpdate = new Absence(idPersonnel, DateTime.Parse(dateDebutToChange), 1, DateTime.Today, null);
             controller.UpdateAbsence(updatedAbsence, AbsenceToUpdate);
         }
-        ///// <summary>
-        ///// Affiche les développeurs
-        ///// </summary>
-        //private void RemplirListePersonnels()
-        //{
-        //    //List<Personnel> lePersonnel = controller.GetLePersonnel();
-        //    //bdgPersonnels.DataSource = lePersonnel;
-        //    //dgvDeveloppeurs.DataSource = bdgPersonnels;
-        //    //dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
-        //    //dgvDeveloppeurs.Columns["pwd"].Visible = false;
-        //    //dgvDeveloppeurs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        //    List<Personnel> lePersonnel = controller.GetLePersonnel();
-        //    List<string> personnelNom = new List<string>();
-        //    for (int i = 0; i < lePersonnel.Count; i++)
-        //    {
-        //        personnelNom.Add(lePersonnel[i].Nom + " " + lePersonnel[i].Prenom);
-        //    }
-        //    lstPerso.Items.AddRange(personnelNom.ToArray());
-        //}
-
-        /// <summary>
-        /// Affiche les développeurs
-        /// </summary>
-        //private void RemplirListeAbsence(int idPersonnel)
-        //{
-        //    absences = controller.GetAbsences(idPersonnel);
-        //    persoNbAsbences = absences.Count;
-        //    string[] perso = new string[4];
-        //    int idPerso = idPersonnel;
-        //    for (int i = 0; i < persoNbAsbences; i++)
-        //    {
-        //        perso[0] = absences[i].DateDebut.ToString();
-        //        perso[1] = absences[i].IdMotif.ToString();
-        //        perso[2] = absences[i].DateFin.ToString();
-        //        perso[3] = absences[i].Motif;
-        //        var lstVItem = new ListViewItem(perso[0]);
-        //        lstVItem.SubItems.Add(perso[2]);
-        //        lstVItem.SubItems.Add(perso[3]);
-        //        lstVAbsences.Items.Add(lstVItem);
-        //    }
-        //}
-
-
-
-
-        //private void btnAjout_Click(object sender, EventArgs e)
-        //{
-        //    FrmAjoutModif frm = new FrmAjoutModif(null, modifEnCours);
-        //    //this.Hide();
-        //    frm.ShowDialog();
-        //}
-
-        //private void btnModif_Click(object sender, EventArgs e)
-        //{
-        //    ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
-        //    if (indices.Count == 1)
-        //    {
-        //        modifEnCours = true;
-        //        ListViewItem data0 = lstVPersonnel.SelectedItems[0];
-        //        string[] data = new string[7];
-        //        data[0] = data0.Text;
-        //        for (int k = 1; k < 7; k++)
-        //        {
-        //            data[k] = data0.SubItems[k].Text;
-        //        }
-        //        //string selectionData = lstVPersonnel.Items[0].Text;
-        //        FrmAjoutModif frm = new FrmAjoutModif(data, modifEnCours);
-        //        //this.Hide();
-        //        frm.ShowDialog();
-        //    }
-        //}
-
-        //private void btnSuppr_Click(object sender, EventArgs e)
-        //{
-        //    ListView.SelectedIndexCollection indices = lstVPersonnel.SelectedIndices;
-        //    if (indices.Count == 1)
-        //    {
-        //        ListViewItem data0 = lstVPersonnel.SelectedItems[0];
-        //        int idPerso = int.Parse(data0.Text);
-        //        int idService = int.Parse(data0.SubItems[6].Text);
-        //        string service = data0.SubItems[1].Text;
-        //        string nom = data0.SubItems[2].Text;
-        //        string prenom = data0.SubItems[3].Text;
-        //        string tel = data0.SubItems[4].Text;
-        //        string mail = data0.SubItems[5].Text;
-        //        controller.DelPersonnel(new Personnel(idPerso, idService, service, nom, prenom, tel, mail));
-        //        ListUpdate();
-        //    }
-        //}
     }
 }

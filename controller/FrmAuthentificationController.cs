@@ -10,7 +10,7 @@ namespace AppMediatek.controller
     public class FrmAuthentificationController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Personnel
+        /// objet d'accès aux opérations possibles sur responsable
         /// </summary>
         private readonly ResponsableAcces responsableAcces;
 

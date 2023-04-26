@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace AppMediatek.view
 {
     /// <summary>
-    /// Fenêtre d'authentification (seuls les developpeurs profil "admin" peuvent accéder à l'application)
+    /// Fenêtre d'authentification (Le responsable a un login et un mot de passe)
     /// </summary>
     public partial class FrmAuthentification : Form
     {
@@ -23,13 +23,10 @@ namespace AppMediatek.view
             InitializeComponent();
             Init();
         }
-        private void FrmAuthentification_Load(object sender, EventArgs e)
-        {
 
-        }
         /// <summary>
         /// Initialisations : 
-        /// Création du controleur
+        /// Création du controleur et masquage des caracteres du mot de passe
         /// </summary>
         private void Init()
         {
@@ -38,7 +35,7 @@ namespace AppMediatek.view
         }
 
         /// <summary>
-        /// Demande au controleur de controler l'authentification
+        /// Bouton pour se connecter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
