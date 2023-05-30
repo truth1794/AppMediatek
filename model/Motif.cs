@@ -17,7 +17,13 @@
             this.Nom = nom;
         }
 
+        /// <summary>
+        /// Entier contenant l'ID du motif
+        /// </summary>
         public int IdMotif { get; }
+        /// <summary>
+        /// chaine contenant le nom du motif
+        /// </summary>
         public string Nom { get; set; }
     }
 }

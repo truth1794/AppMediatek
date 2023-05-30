@@ -67,13 +67,11 @@ namespace AppMediatek.dal
         /// <returns></returns>
         static string GetConnectionStringByName(string name)
         {
-            string returnValue = null;
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
             if (settings != null)
-                returnValue = settings.ConnectionString;
+                return settings.ConnectionString;
             else
-                returnValue = "server=localhost;user id=root;SslMode = none;database=app_db";
-            return returnValue;
+                return "server=localhost;user id=app_admin;Password=adminpwd;SslMode = none;database=app_db";
         }
 
     }

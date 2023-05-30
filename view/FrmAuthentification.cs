@@ -63,5 +63,16 @@ namespace AppMediatek.view
             }
         }
 
+        private void chkBMdp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkBMdp.Checked)
+            {
+                txtPwd.PasswordChar = '*';
+            }
+            else
+            {
+                txtPwd.PasswordChar = '\0';
+            }
+        }
     }
 }

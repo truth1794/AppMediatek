@@ -24,10 +24,25 @@ namespace AppMediatek.Model
             this.Motif = motif;
         }
 
+        /// <summary>
+        /// Entier contenant l'ID du personnel
+        /// </summary>
         public int Idpersonnel { get; }
+        /// <summary>
+        /// Entier contenant l'ID du motif
+        /// </summary>
         public int IdMotif { get; set; }
+        /// <summary>
+        /// DateTime contenant la date de debut de l'absence
+        /// </summary>
         public DateTime DateDebut { get; set; }
+        /// <summary>
+        /// DateTime contenant la date de fin de l'absence
+        /// </summary>
         public DateTime DateFin { get; set; }
+        /// <summary>
+        /// chaine contenant le motif
+        /// </summary>
         public string Motif { get; set; }
 
     }

@@ -128,8 +128,9 @@ namespace AppMediatek.view
             this.Controls.Add(this.cmbMotif);
             this.Controls.Add(this.dateTFin);
             this.Controls.Add(this.dateTDebut);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmManipAbsence";
-            this.Text = "FrmManipAbsence";
+            this.Text = "Modification absence";
             this.ResumeLayout(false);
             this.PerformLayout();
 

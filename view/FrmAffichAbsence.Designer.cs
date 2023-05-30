@@ -222,8 +222,9 @@ namespace AppMediatek.view
             this.Controls.Add(this.lblPrenomDef);
             this.Controls.Add(this.lblNomDef);
             this.Controls.Add(this.lstVAbsences);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmAffichAbsence";
-            this.Text = "FrmAbsence";
+            this.Text = "Absences";
             this.ResumeLayout(false);
             this.PerformLayout();
 

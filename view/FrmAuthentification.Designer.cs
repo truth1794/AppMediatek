@@ -31,6 +31,7 @@ namespace AppMediatek.view
         {
             this.grpLogin = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkBMdp = new System.Windows.Forms.CheckBox();
             this.lblPwd = new System.Windows.Forms.Label();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -50,19 +51,32 @@ namespace AppMediatek.view
             this.grpLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpLogin.Location = new System.Drawing.Point(12, 12);
             this.grpLogin.Name = "grpLogin";
-            this.grpLogin.Size = new System.Drawing.Size(368, 207);
+            this.grpLogin.Size = new System.Drawing.Size(368, 236);
             this.grpLogin.TabIndex = 0;
             this.grpLogin.TabStop = false;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkBMdp);
             this.groupBox2.Controls.Add(this.lblPwd);
             this.groupBox2.Controls.Add(this.txtPwd);
             this.groupBox2.Location = new System.Drawing.Point(6, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(352, 66);
+            this.groupBox2.Size = new System.Drawing.Size(352, 102);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
+            // 
+            // chkBMdp
+            // 
+            this.chkBMdp.AutoSize = true;
+            this.chkBMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBMdp.Location = new System.Drawing.Point(157, 65);
+            this.chkBMdp.Name = "chkBMdp";
+            this.chkBMdp.Size = new System.Drawing.Size(182, 21);
+            this.chkBMdp.TabIndex = 4;
+            this.chkBMdp.Text = "Afficher le mot de passe";
+            this.chkBMdp.UseVisualStyleBackColor = true;
+            this.chkBMdp.CheckedChanged += new System.EventHandler(this.chkBMdp_CheckedChanged);
             // 
             // lblPwd
             // 
@@ -85,7 +99,7 @@ namespace AppMediatek.view
             // btnConnect
             // 
             this.btnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnect.Location = new System.Drawing.Point(226, 165);
+            this.btnConnect.Location = new System.Drawing.Point(226, 201);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(122, 29);
             this.btnConnect.TabIndex = 1;
@@ -125,10 +139,11 @@ namespace AppMediatek.view
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 237);
+            this.ClientSize = new System.Drawing.Size(390, 260);
             this.Controls.Add(this.grpLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmAuthentification";
-            this.Text = "Form1";
+            this.Text = "Connexion";
             this.grpLogin.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -148,6 +163,7 @@ namespace AppMediatek.view
         private System.Windows.Forms.Label lblPwd;
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.CheckBox chkBMdp;
     }
 }
 

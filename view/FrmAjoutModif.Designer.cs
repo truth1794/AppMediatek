@@ -1,6 +1,9 @@
 ﻿
 namespace AppMediatek.view
 {
+    /// <summary>
+    /// 
+    /// </summary>
     partial class FrmAjoutModif
     {
         /// <summary>
@@ -174,8 +177,9 @@ namespace AppMediatek.view
             this.Controls.Add(this.txtTel);
             this.Controls.Add(this.txtPrenom);
             this.Controls.Add(this.txtNom);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmAjoutModif";
-            this.Text = "FrmModification";
+            this.Text = "Modification du personnel";
             this.ResumeLayout(false);
             this.PerformLayout();
 

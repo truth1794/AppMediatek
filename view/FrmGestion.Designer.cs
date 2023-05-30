@@ -148,8 +148,9 @@ namespace AppMediatek.view
             this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.btnModif);
             this.Controls.Add(this.btnAjout);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmGestion";
-            this.Text = "Form2";
+            this.Text = "Gestion du personnel";
             this.ResumeLayout(false);
 
         }

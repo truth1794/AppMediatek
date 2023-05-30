@@ -26,17 +26,36 @@ namespace AppMediatek.Model
             this.Prenom = prenom;
             this.Tel = tel;
             this.Mail = mail;
-            this.Pwd = Pwd;
         }
 
+        /// <summary>
+        /// Entier contenant l'ID du personnel
+        /// </summary>
         public int Idpersonnel { get; }
+        /// <summary>
+        /// Entier contenant l'ID du service
+        /// </summary>
         public int Idservice { get; }
+        /// <summary>
+        /// chaine contenant le nom du service
+        /// </summary>
         public string Service { get; }
+        /// <summary>
+        /// chaine contenant le nom du personnel
+        /// </summary>
         public string Nom { get; set; }
+        /// <summary>
+        /// chaine contenant le prenom du personnel
+        /// </summary>
         public string Prenom { get; set; }
+        /// <summary>
+        /// chaine contenant le tel du personnel
+        /// </summary>
         public string Tel { get; set; }
+        /// <summary>
+        /// chaine contenant le mail du personnel
+        /// </summary>
         public string Mail { get; set; }
-        public string Pwd { get; set; }
 
     }
 }

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace AppMediatek.Model
 {
-    // <summary>
+    /// <summary>
     /// Classe métier liée à la table Responsable
     /// </summary>
     public class Responsable
     {
-        public string Login { get; }
-        public string Pwd { get; }
+        
 
         /// <summary>
         /// Valorise les propriétés
@@ -24,5 +23,14 @@ namespace AppMediatek.Model
             this.Login = login;
             this.Pwd = pwd;
         }
+
+        /// <summary>
+        /// chaine contenant le login
+        /// </summary>
+        public string Login { get; }
+        /// <summary>
+        /// chaine contenant le mot de passe (pwd)
+        /// </summary>
+        public string Pwd { get; }
     }
 }

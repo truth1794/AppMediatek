@@ -5,6 +5,9 @@ using Serilog;
 
 namespace AppMediatek.dal
 {
+    /// <summary>
+    /// Classe permettant de gérer les demandes concernant les responsables
+    /// </summary>
     public class ResponsableAcces
     {
         /// <summary>

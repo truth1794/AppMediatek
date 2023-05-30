@@ -9,7 +9,7 @@
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
-        /// <param name="idPersonnel"></param>
+        /// <param name="idService"></param>
         /// <param name="nom"></param>
         public Service(int idService, string nom)
         {
@@ -18,7 +18,13 @@
 
         }
 
+        /// <summary>
+        /// entier contenant l'ID du service
+        /// </summary>
         public int IdService { get; }
+        /// <summary>
+        /// chaine contenant le nom du service
+        /// </summary>
         public string Nom { get; set; }
     }
 }

@@ -20,10 +20,6 @@ namespace AppMediatek.view
         /// </summary>
         private FrmAffichAbsController controller;
         /// <summary>
-        /// Controleur de la fenêtre
-        /// </summary>
-        //private List<Absence> absences = new List<Absence>();
-        /// <summary>
         /// object contenant l'ID du personnel selectionne
         /// </summary>
         private int idPersonnel;
