@@ -73,6 +73,5 @@ namespace AppMediatek.dal
             else
                 return "server=localhost;user id=app_admin;Password=adminpwd;SslMode = none;database=app_db";
         }
-
     }
 }

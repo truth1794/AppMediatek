@@ -26,7 +26,8 @@ namespace app_mediatek.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;SslMode = none;database=app_db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=app_admin;Password=adminpwd;SslMode = none;database=app_" +
+            "db")]
         public string appMediatekConnectionString {
             get {
                 return ((string)(this["appMediatekConnectionString"]));
