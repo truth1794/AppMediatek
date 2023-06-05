@@ -13,6 +13,9 @@ Lien : https://github.com/truth1794/AppMediatek/blob/Dev/Documentation/Compte%20
 # Documentation utilisateur video 
 Lien : https://youtu.be/-xOnRpgCE9U
 
+# Portfolio
+Lien : https://portfoliodepatrick4.wordpress.com/
+
 
 
 
