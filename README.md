@@ -11,6 +11,12 @@ Lors de l'ouverture du fichier, Windows peut afficher une avertissement de secur
 # Compte rendu
 Lien : https://github.com/truth1794/AppMediatek/blob/Dev/Documentation/Compte%20Rendu%20Atelier%20de%20professionnalisation%202_2.pdf
 
+# Script SQL
+Lien : https://github.com/truth1794/AppMediatek/blob/Dev/SQL/app_db.sql
+
+# Installateur
+Lien : https://github.com/truth1794/AppMediatek/blob/Dev/Installateur/setup.msi
+
 # Documentation utilisateur video 
 Lien : https://youtu.be/-xOnRpgCE9U
 
