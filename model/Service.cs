@@ -1,4 +1,4 @@
-﻿namespace AppMediatek.Model
+namespace AppMediatek.Model
 {
     /// <summary>
     /// Classe métier liée à la table Service
@@ -9,8 +9,8 @@
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
-        /// <param name="idService"></param>
-        /// <param name="nom"></param>
+        /// <param name="idService">id du service</param>
+        /// <param name="nom">nom du service</param>
         public Service(int idService, string nom)
         {
             this.IdService = idService;
