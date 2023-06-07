@@ -1,4 +1,4 @@
-﻿using AppMediatek.Model;
+using AppMediatek.Model;
 using System;
 using System.Collections.Generic;
 using Serilog;
