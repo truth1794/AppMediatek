@@ -1,7 +1,15 @@
-﻿using System;
+using System;
 
 namespace AppMediatek.Model
 {
+    /// <summary>
+    /// The <see cref="AppMediatek.Model"/> model namespace
+    /// </summary>
+
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    class NamespaceDoc
+    {
+    }
     /// <summary>
     /// Classe métier liée à la table Absence
     /// </summary>
@@ -10,11 +18,11 @@ namespace AppMediatek.Model
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
-        /// <param name="idPersonnel"></param>
-        /// <param name="dateDebut"></param>
-        /// <param name="idMotif"></param>
-        /// <param name="dateFin"></param>
-        /// <param name="motif"></param>
+        /// <param name="idPersonnel">id du personnel</param>
+        /// <param name="dateDebut">date de debut d'asbence</param>
+        /// <param name="idMotif">id du motif</param>
+        /// <param name="dateFin">date de fin d'absence</param>
+        /// <param name="motif">motif</param>
         public Absence(int idPersonnel, DateTime dateDebut, int idMotif, DateTime dateFin, string motif)
         {
             this.Idpersonnel = idPersonnel;
@@ -44,6 +52,5 @@ namespace AppMediatek.Model
         /// chaine contenant le motif
         /// </summary>
         public string Motif { get; set; }
-
     }
 }
