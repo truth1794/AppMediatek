@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AppMediatek.controller;
@@ -6,6 +6,14 @@ using AppMediatek.Model;
 
 namespace AppMediatek.view
 {
+    /// <summary>
+    /// The <see cref="AppMediatek.view"/> view namespace
+    /// </summary>
+
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    class NamespaceDoc
+    {
+    }
     /// <summary>
     /// Fenêtre d'affichage des développeurs et de leurs profils
     /// </summary>
@@ -43,6 +51,7 @@ namespace AppMediatek.view
         /// <summary>
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
+        /// <param name="data"> tableau de chaines contenant les informations du personnel</param>
         public FrmAffichAbsence(string[] data)
         {
             idPersonnel = int.Parse(data[0]);
@@ -91,7 +100,7 @@ namespace AppMediatek.view
         /// <summary>
         /// Remplissage de la liste
         /// </summary>
-        /// <param name="idPersonnel">ID du personnel selectionne</param> id
+        /// <param name="idPersonnel">ID du personnel selectionne</param>
         private void RemplirListeAbsence(int idPersonnel)
         {
             List<Absence> absences = controller.GetAbsences(idPersonnel);
