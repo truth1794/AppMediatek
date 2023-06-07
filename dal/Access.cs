@@ -1,4 +1,4 @@
-﻿using AppMediatek.bddmanager;
+using AppMediatek.bddmanager;
 using System;
 using Serilog;
 using System.Configuration;
@@ -50,7 +50,7 @@ namespace AppMediatek.dal
         /// <summary>
         /// Création d'une seule instance de la classe
         /// </summary>
-        /// <returns></returns>
+        /// /// <returns> l'instance</returns>
         public static Access GetInstance()
         {
             if (instance == null)
@@ -64,7 +64,7 @@ namespace AppMediatek.dal
         /// Récupération de la chaîne de connexion
         /// </summary>
         /// <param name="name"></param>
-        /// <returns></returns>
+        /// <returns> chaine contenant les informations de connexion</returns>
         static string GetConnectionStringByName(string name)
         {
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
