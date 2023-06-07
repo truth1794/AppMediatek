@@ -1,4 +1,4 @@
-﻿
+
 namespace AppMediatek.Model
 {
     /// <summary>
@@ -10,13 +10,13 @@ namespace AppMediatek.Model
         /// <summary>
         /// Valorise les propriétés
         /// </summary>
-        /// <param name="idPersonnel"></param>
-        /// <param name="idService"></param>
-        /// <param name="service"></param>
-        /// <param name="nom"></param>
-        /// <param name="prenom"></param>
-        /// <param name="tel"></param>
-        /// <param name="mail"></param>
+        /// <param name="idPersonnel">id du personnel</param>
+        /// <param name="idService">id du service</param>
+        /// <param name="service">nom du service</param>
+        /// <param name="nom">nom du personnel</param>
+        /// <param name="prenom">prenom du personnel</param>
+        /// <param name="tel">telephone</param>
+        /// <param name="mail">mail</param>
         public Personnel(int idPersonnel,int idService, string service, string nom, string prenom, string tel, string mail)
         {
             this.Idpersonnel = idPersonnel;
