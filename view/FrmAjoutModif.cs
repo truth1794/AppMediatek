@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using AppMediatek.controller;
@@ -6,6 +6,9 @@ using AppMediatek.Model;
 
 namespace AppMediatek.view
 {
+    /// <summary>
+    /// Fenêtre d'affichage d'ajout ou de modification de personnel
+    /// </summary>
     public partial class FrmAjoutModif : Form
     {
         /// <summary>
@@ -25,7 +28,7 @@ namespace AppMediatek.view
         /// construction des composants graphiques et appel des autres initialisations
         /// </summary>
         /// <param name="selectData">Array de string contenant les informations du personnel selectionne</param>
-        /// <param name="modif"></param>
+        /// <param name="modif">booleen de la modification en cours</param>
         public FrmAjoutModif(string[] selectData,bool modif)
         {
             InitializeComponent();
