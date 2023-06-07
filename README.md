@@ -4,6 +4,10 @@ AppMediatek est une application de bureau permettant la gestion du personnel (aj
 # Contexte et Mission
 Afin de gérer son personnel, le réseau de médiathèques de la Vienne MediaTek86 souhaite se doter d’un logiciel de gestion de son personnel. En tant que technicien développeur junior pour l’ESN InfoTech Services 86, j’ai eu pour mission de développer ce logiciel de bureau qui permettra de gérer les affectations, les informations et les absences du personnel. Le logiciel est écrit sous C# au format Windows Forms et utilise MariaDB pour la gestion de sa base de données.
 
+# Identifiant responsable 
+nom d'utilisateur : admin0
+mot de passe : pwd0
+
 # Documentation technique
 Lien : https://github.com/truth1794/AppMediatek/blob/Dev/Documentation/Documentation.chm
 Lors de l'ouverture du fichier, Windows peut afficher une avertissement de securite, il faut alors decocher l'option "Toujours demander avant d'ouvrir ce fichier" sinon rien ne sera afficher.
