@@ -1,10 +1,18 @@
-﻿using AppMediatek.dal;
+using AppMediatek.dal;
 using AppMediatek.Model;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace AppMediatek.controller
 {
+    /// <summary>
+    /// The <see cref="AppMediatek.controller"/> controller namespace
+    /// </summary>
+
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    class NamespaceDoc
+    {
+    }
     /// <summary>
     /// Contrôleur de FrmGestion
     /// </summary>
@@ -31,6 +39,7 @@ namespace AppMediatek.controller
         /// <summary>
         /// Récupère et retourne les absences du personnel selectionne
         /// </summary>
+        /// <param name="idPerso">id du personnel</param>
         /// <returns>liste des absences</returns>
         public List<Absence> GetAbsences(int idPerso)
         {
