@@ -1,4 +1,4 @@
-﻿using AppMediatek.Model;
+using AppMediatek.Model;
 using System;
 using System.Collections.Generic;
 using Serilog;
@@ -25,7 +25,7 @@ namespace AppMediatek.dal
         /// <summary>
         /// Controle si les informations saisies sont correct(login, pwd)
         /// </summary>
-        /// <param name="responsable"></param>
+        /// <param name="responsable">objet responsable a ajouter</param>
         /// <returns>vrai si le login et le pwd du responsable sont corrects</returns>
         public Boolean ControleAuthentification(Responsable responsable)
         {
