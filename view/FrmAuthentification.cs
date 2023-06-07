@@ -1,4 +1,4 @@
-﻿using AppMediatek.controller;
+using AppMediatek.controller;
 using AppMediatek.Model;
 using System;
 using System.Windows.Forms;
