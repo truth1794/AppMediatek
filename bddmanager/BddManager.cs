@@ -1,10 +1,19 @@
-﻿//using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using MySqlConnector;
 
+
 namespace AppMediatek.bddmanager
 {
+    /// <summary>
+    /// The <see cref="AppMediatek.bddmanager"/> bddmanager namespace
+    /// </summary>
+
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    class NamespaceDoc
+    {
+    }
     /// <summary>
     /// Singleton : connexion à la base de données et exécution des requêtes
     /// </summary>
