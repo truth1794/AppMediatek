@@ -1,164 +1,56 @@
-﻿using AppMediatek.Model;
 using System;
-using System.Collections.Generic;
-using Serilog;
 
-namespace AppMediatek.dal
+namespace AppMediatek.Model
 {
     /// <summary>
-    /// Classe gerant les requetes SQL sur la base de donnee lies a la table Absence
+    /// The <see cref="AppMediatek.Model"/> model namespace
     /// </summary>
-    public class AbsenceAcces
+
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    class NamespaceDoc
+    {
+    }
+    /// <summary>
+    /// Classe métier liée à la table Absence
+    /// </summary>
+    public class Absence
     {
         /// <summary>
-        /// Instance unique de l'accès aux données
+        /// Valorise les propriétés
         /// </summary>
-        private readonly Access access = null;
-
-        /// <summary>
-        /// Constructeur pour créer l'accès aux données
-        /// </summary>
-        public AbsenceAcces()
+        /// <param name="idPersonnel">id du personnel</param>
+        /// <param name="dateDebut">date de debut d'asbence</param>
+        /// <param name="idMotif">id du motif</param>
+        /// <param name="dateFin">date de fin d'absence</param>
+        /// <param name="motif">motif</param>
+        public Absence(int idPersonnel, DateTime dateDebut, int idMotif, DateTime dateFin, string motif)
         {
-            access = Access.GetInstance();
+            this.Idpersonnel = idPersonnel;
+            this.IdMotif = idMotif;
+            this.DateDebut = dateDebut;
+            this.DateFin = dateFin;
+            this.Motif = motif;
         }
 
         /// <summary>
-        /// Récupère et retourne les absences
+        /// Entier contenant l'ID du personnel
         /// </summary>
-        /// <returns>liste des absences</returns>
-        public List<Absence> GetAbsences(int idPersonnel)
-        {
-            List<Absence> absences = new List<Absence>();
-            if (access.Manager != null)
-            {
-                string req = "select a.idpersonnel, a.datedebut, a.idmotif, a.datefin, m.libelle ";
-                req += "from absence a, personnel p, motif m ";
-                req += "where p.idpersonnel in ";
-                req += "(select a.idpersonnel from absence) and ";
-                req += "p.idpersonnel = " + idPersonnel.ToString() + " and ";
-                req += "m.idmotif = a.idmotif ";
-                req += "order by a.datedebut;";
-                try
-                {
-                    List<Object[]> records = access.Manager.ReqSelect(req);
-                    if (records != null)
-                    {
-                        Log.Debug("AbsenceAcces.GetAbsences nb records = {0}", records.Count);
-                        foreach (Object[] record in records)
-                        {
-                            Absence absent = new Absence((int)record[0], (DateTime)record[1], (int)record[2],
-                                (DateTime)record[3],(string)record[4]);
-                            absences.Add(absent);
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Log.Error("AbsenceAcces.GetAbsences catch req={0} erreur={1}", req, e.Message);
-                    Environment.Exit(0);
-                }
-            }
-            return absences;
-        }
-
+        public int Idpersonnel { get; }
         /// <summary>
-        /// Ajouter une absence
+        /// Entier contenant l'ID du motif
         /// </summary>
-        /// <param name="absence">objet absence à ajouter</param>
-        public void AddAbsence(Absence absence)
-        {
-            if (access.Manager != null)
-            {
-                //req += "SET FOREIGN_KEY_CHECKS = 1;";
-                string req = "insert into absence(idpersonnel,datedebut, idmotif, datefin) ";
-                req += "values (@idpersonnel,@datedebut, @idmotif, @datefin); ";
-                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd 00:00:00.fff");
-                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd 00:00:00.fff");
-                Dictionary<string, object> parameters = new Dictionary<string, object> {
-                    { "@idpersonnel", absence.Idpersonnel },
-                    { "@datedebut", sqlFormatDateDebut },
-                    { "@idmotif", absence.IdMotif },
-                    { "@datefin", sqlFormatDateFin }
-                };
-                try
-                {
-                    access.Manager.ReqUpdate(req, parameters);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Log.Error("AbsenceAcces.AddAbsence catch req={0} erreur={1}", req, e.Message);
-                    Environment.Exit(0);
-                }
-            }
-        }
-
+        public int IdMotif { get; set; }
         /// <summary>
-        /// Demande de modification d'une absence
+        /// DateTime contenant la date de debut de l'absence
         /// </summary>
-        /// <param name="updatedAbsence">objet absence mis a jour</param>
-        /// <param name="absenceToChange">objet absence à modifier</param>
-        public void UpdateAbsence(Absence updatedAbsence, Absence absenceToChange)
-        {
-            if (access.Manager != null)
-            {
-                string req = "update absence set datedebut = @datedebut, idmotif = @idmotif, datefin = @datefin ";
-                req += "where idpersonnel = @idpersonnel ";
-                req += "and datedebut = @dateDebutToUpdate;";
-                string sqlDateDebut = updatedAbsence.DateDebut.ToString("yyyy-MM-dd 00:00:00");
-                string sqlDateFin = updatedAbsence.DateFin.ToString("yyyy-MM-dd 00:00:00");
-                string sqlDateDebutToUpdate = absenceToChange.DateDebut.ToString("yyyy-MM-dd HH:mm:ss");
-                Dictionary<string, object> parameters = new Dictionary<string, object> {
-                    { "@idpersonnel", updatedAbsence.Idpersonnel },
-                    { "@datedebut", sqlDateDebut },
-                    { "@dateDebutToUpdate", sqlDateDebutToUpdate },
-                    { "@idmotif", updatedAbsence.IdMotif },
-                    { "@datefin", sqlDateFin}
-                };
-                try
-                {
-                    access.Manager.ReqUpdate(req, parameters);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Log.Error("AbsenceAcces.UpdateAbsence catch req={0} erreur={1}", req, e.Message);
-                    Environment.Exit(0);
-                }
-            }
-        }
+        public DateTime DateDebut { get; set; }
         /// <summary>
-        /// Demande de suppression d'une absence
+        /// DateTime contenant la date de fin de l'absence
         /// </summary>
-        /// <param name="absence">objet absence à supprimer</param>
-        public void DelAbsence(Absence absence)
-        {
-            if (access.Manager != null)
-            {
-                string req = "delete from absence  ";
-                req += "where idpersonnel = @idpersonnel ";
-                req += "and datedebut = @datedebut ";
-                req += "and datefin = @datefin;";
-                string sqlFormatDateDebut = absence.DateDebut.ToString("yyyy-MM-dd HH:mm:ss");
-                string sqlFormatDateFin = absence.DateFin.ToString("yyyy-MM-dd HH:mm:ss");
-                Dictionary<string, object> parameters = new Dictionary<string, object> {
-                    {"@idpersonnel", absence.Idpersonnel },
-                    {"@datedebut", sqlFormatDateDebut },
-                    {"@datefin", sqlFormatDateFin }
-                };
-                try
-                {
-                    access.Manager.ReqUpdate(req, parameters);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Log.Error("AbsenceAcces.DelAbsence catch req={0} erreur={1}", req, e.Message);
-                    Environment.Exit(0);
-                }
-            }
-        }
+        public DateTime DateFin { get; set; }
+        /// <summary>
+        /// chaine contenant le motif
+        /// </summary>
+        public string Motif { get; set; }
     }
 }
